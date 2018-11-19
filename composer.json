@@ -1,0 +1,19 @@
+{
+    "name": "tareq1988/wp-sms",
+    "description": "A SMS Sending Plugin for WordPress",
+    "type": "wordpress-plugin",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Tareq Hasan",
+            "email": "tareq@wedevs.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "WeDevs\\Textly\\": "includes/"
+        }
+    }
+}
