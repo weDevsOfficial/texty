@@ -1,12 +1,14 @@
 <?php
-namespace WeDevs\Textly\Gateway;
+namespace Textly\Gateways;
+
+use Textly\Interfaces\Gateway;
 
 /**
  * Nexmo Class
  *
  * @see https://developer.nexmo.com/api/sms
  */
-class Nexmo implements Contract {
+class Nexmo implements Gateway {
 
     /**
      * API Endpoint

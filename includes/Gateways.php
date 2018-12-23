@@ -1,5 +1,5 @@
 <?php
-namespace WeDevs\Textly;
+namespace Textly;
 
 /**
  * Manager Class
@@ -33,8 +33,8 @@ class Gateways {
      */
     public function all() {
         $gateways = [
-            'twilio' => __NAMESPACE__ . '\Gateway\Twilio',
-            'nexmo'  => __NAMESPACE__ . '\Gateway\Nexmo',
+            'twilio' => __NAMESPACE__ . '\Gateways\Twilio',
+            'nexmo'  => __NAMESPACE__ . '\Gateways\Nexmo',
         ];
 
         return apply_filters( 'available_gateways', $gateways );

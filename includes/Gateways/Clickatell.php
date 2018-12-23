@@ -1,12 +1,14 @@
 <?php
-namespace WeDevs\Textly\Gateway;
+namespace Textly\Gateways;
+
+use Textly\Interfaces\Gateway;
 
 /**
  * Clickatell Class
  *
  * @see https://www.clickatell.com/developers/api-documentation/rest-api-send-message/
  */
-class Clickatell implements Contract {
+class Clickatell implements Gateway {
 
     /**
      * API Endpoint
@@ -43,8 +45,8 @@ class Clickatell implements Contract {
                 'Authorization' => $this->api_key
             ],
             'body' => json_encode( [
-                'from' => $from,
-                'to'   => [ $to ],
+                'from'    => $from,
+                'to'      => [ $to ],
                 'content' => $message
             ] )
         ];

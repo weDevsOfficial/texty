@@ -46,7 +46,7 @@ class Textly {
      * @return \WeDevs\Textly\Gateways
      */
     public function gateway() {
-        return new \WeDevs\Textly\Gateways();
+        return new \Textly\Gateways();
     }
 }
 

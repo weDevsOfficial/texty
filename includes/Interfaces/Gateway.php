@@ -1,5 +1,5 @@
 <?php
-namespace WeDevs\Textly\Gateway;
+namespace Textly\Interfaces;
 
 interface Contract {
 

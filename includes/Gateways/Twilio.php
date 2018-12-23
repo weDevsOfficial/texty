@@ -1,12 +1,14 @@
 <?php
-namespace WeDevs\Textly\Gateway;
+namespace Textly\Gateways;
+
+use Textly\Interfaces\Gateway;
 
 /**
  * Twilio Class
  *
  * @see https://www.twilio.com/docs/sms/api/message
  */
-class Twilio implements Contract {
+class Twilio implements Gateway {
 
     /**
      * API Endpoint
