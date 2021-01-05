@@ -10,8 +10,7 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: textly
  */
-
-defined( 'ABSPATH' ) or exit;
+defined( 'ABSPATH' ) || exit;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -20,8 +19,11 @@ require __DIR__ . '/vendor/autoload.php';
  */
 class Textly {
 
-    function __construct() {
-        # code...
+    /**
+     * Initialize
+     */
+    public function __construct() {
+        // code...
     }
 
     /**

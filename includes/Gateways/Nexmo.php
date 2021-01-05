@@ -1,7 +1,9 @@
 <?php
+
 namespace Textly\Gateways;
 
 use Textly\Interfaces\Gateway;
+use WP_Error;
 
 /**
  * Nexmo Class
@@ -35,7 +37,7 @@ class Nexmo implements Gateway {
      * @param string $key
      * @param string $secret
      */
-    function __construct( $key, $secret ) {
+    public function __construct( $key, $secret ) {
         $this->key    = $key;
         $this->secret = $secret;
     }
@@ -43,10 +45,10 @@ class Nexmo implements Gateway {
     /**
      * Send SMS
      *
-     * @param  string $to
-     * @param  string $message
+     * @param string $to
+     * @param string $message
      *
-     * @return \WP_Error|boolean
+     * @return WP_Error|bool
      */
     public function send( $to, $message, $from ) {
         $args = [
@@ -55,9 +57,9 @@ class Nexmo implements Gateway {
                 'api_key'    => $this->key,
                 'api_secret' => $this->secret,
                 'to'         => $to,
-                'text'       => $message
+                'text'       => $message,
                 'type'       => 'text',
-            ]
+            ],
         ];
 
         $request = wp_remote_post( self::ENDPOINT, $args );

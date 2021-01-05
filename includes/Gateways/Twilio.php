@@ -1,7 +1,9 @@
 <?php
+
 namespace Textly\Gateways;
 
 use Textly\Interfaces\Gateway;
+use WP_Error;
 
 /**
  * Twilio Class
@@ -35,29 +37,29 @@ class Twilio implements Gateway {
      * @param string $sid
      * @param string $token
      */
-    function __construct( $sid, $token ) {
+    public function __construct( $sid, $token ) {
         $this->sid    = $sid;
-        $this->token = $token;
+        $this->token  = $token;
     }
 
     /**
      * Send SMS
      *
-     * @param  string $to
-     * @param  string $message
+     * @param string $to
+     * @param string $message
      *
-     * @return \WP_Error|true
+     * @return WP_Error|true
      */
     public function send( $to, $message, $from ) {
         $args = [
             'headers' => [
-                'Authorization' => 'Basic ' . base64_encode( $this->sid . ':' . $this->token )
+                'Authorization' => 'Basic ' . base64_encode( $this->sid . ':' . $this->token ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
             ],
             'body' => [
                 'From' => $from,
                 'To'   => $to,
-                'Body' => $message
-            ]
+                'Body' => $message,
+            ],
         ];
 
         $endpoint = str_replace( '{sid}', $this->sid, self::ENDPOINT );
@@ -65,10 +67,9 @@ class Twilio implements Gateway {
         $body     = json_decode( wp_remote_retrieve_body( $response ) );
 
         if ( 201 !== $response['response']['code'] ) {
-            return new \WP_Error( $body->code, $body->message );
+            return new WP_Error( $body->code, $body->message );
         }
 
         return true;
     }
-
 }

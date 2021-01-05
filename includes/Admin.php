@@ -1,13 +1,16 @@
 <?php
+
 namespace Textly;
 
 /**
  * Manager Class
  */
-class admin {
+class Admin {
 
+    /**
+     * Initialize
+     */
     public function __construct() {
-        # code
+        // code
     }
-
 }

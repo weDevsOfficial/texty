@@ -1,7 +1,9 @@
 <?php
+
 namespace Textly\Gateways;
 
 use Textly\Interfaces\Gateway;
+use WP_Error;
 
 /**
  * Clickatell Class
@@ -27,38 +29,34 @@ class Clickatell implements Gateway {
      *
      * @param string $api_key
      */
-    function __construct( $api_key ) {
-        $this->api_key    = $api_key;
+    public function __construct( $api_key ) {
+        $this->api_key = $api_key;
     }
 
     /**
      * Send SMS
      *
-     * @param  string $to
-     * @param  string $message
+     * @param string $to
+     * @param string $message
      *
-     * @return \WP_Error|true
+     * @return WP_Error|true
      */
     public function send( $to, $message, $from ) {
         $args = [
             'headers' => [
-                'Authorization' => $this->api_key
+                'Authorization' => $this->api_key,
             ],
-            'body' => json_encode( [
-                'from'    => $from,
-                'to'      => [ $to ],
-                'content' => $message
-            ] )
+            'body' => wp_json_encode(
+                [
+                    'from'    => $from,
+                    'to'      => [ $to ],
+                    'content' => $message,
+                ]
+            ),
         ];
 
         $response = wp_remote_post( self::ENDPOINT, $args );
-        // $body     = json_decode( wp_remote_retrieve_body( $response ) );
-
-        // if ( 202 !== $response['response']['code'] ) {
-        //     return new \WP_Error( $body->code, $body->message );
-        // }
 
         return true;
     }
-
 }

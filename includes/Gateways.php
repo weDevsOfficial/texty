@@ -1,5 +1,8 @@
 <?php
+
 namespace Textly;
+
+use WP_Error;
 
 /**
  * Manager Class
@@ -9,11 +12,11 @@ class Gateways {
     /**
      * Send the message from the active gateway
      *
-     * @param  string $to      The TO phone number
-     * @param  string $message The message to send
-     * @param  string $from    The From address
+     * @param string $to      The TO phone number
+     * @param string $message The message to send
+     * @param string $from    The From address
      *
-     * @return boolean|\WP_Error
+     * @return bool|WP_Error
      */
     public function send( $to, $message, $from ) {
         return $this->active_gateway()->send( $to, $message, $from );
@@ -23,7 +26,7 @@ class Gateways {
         $gateways = $this->all();
         $active   = get_option( 'textly_options', [] );
 
-        return new $active;
+        return new $active();
     }
 
     /**
@@ -39,5 +42,4 @@ class Gateways {
 
         return apply_filters( 'available_gateways', $gateways );
     }
-
 }
