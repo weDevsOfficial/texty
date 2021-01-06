@@ -1,8 +1,7 @@
 <?php
 
-namespace Textly\Gateways;
+namespace Texty\Gateways;
 
-use Textly\Interfaces\Gateway;
 use WP_Error;
 
 /**
@@ -10,7 +9,7 @@ use WP_Error;
  *
  * @see https://developer.nexmo.com/api/sms
  */
-class Nexmo implements Gateway {
+class Nexmo implements GatewayInterface {
 
     /**
      * API Endpoint
@@ -32,14 +31,56 @@ class Nexmo implements Gateway {
     private $secret;
 
     /**
-     * [__construct description]
+     * Get the name
      *
-     * @param string $key
-     * @param string $secret
+     * @return string
      */
-    public function __construct( $key, $secret ) {
-        $this->key    = $key;
-        $this->secret = $secret;
+    public function name() {
+        return __( 'Vonage (nexmo)', 'texty' );
+    }
+
+    /**
+     * Set API key
+     *
+     * @param string $api_key
+     *
+     * @return void
+     */
+    public function set_key( $key ) {
+        $this->key = $key;
+
+        return $this;
+    }
+
+    /**
+     * Set API secret
+     *
+     * @param string $secret
+     *
+     * @return void
+     */
+    public function set_secret( $secret ) {
+        $this->$secret = $secret;
+
+        return $this;
+    }
+
+    /**
+     * Get the logo
+     *
+     * @return string
+     */
+    public function logo() {
+        return TEXTY_URL . '/assets/images/vonage.svg';
+    }
+
+    /**
+     * Get the credentials
+     *
+     * @return array
+     */
+    public function get_credential() {
+        return [];
     }
 
     /**

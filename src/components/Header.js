@@ -7,23 +7,23 @@ function Header() {
       <div className="textly-admin-header__logo"></div>
 
       <div className="textly-admin-header__menu">
-        <a href="#/" className="header-link" title={__('Home', 'textly')}>
+        <a href="#/" className="header-link" title={__('Home', 'texty')}>
           <span className="dashicons dashicons-admin-home"></span>
-          <span className="title">{__('Home', 'textly')}</span>
+          <span className="title">{__('Home', 'texty')}</span>
         </a>
 
-        <a href="#/tools" className="header-link" title={__('Tools', 'textly')}>
+        <a href="#/tools" className="header-link" title={__('Tools', 'texty')}>
           <span className="dashicons dashicons-admin-tools"></span>
-          <span className="title">{__('Tools', 'textly')}</span>
+          <span className="title">{__('Tools', 'texty')}</span>
         </a>
 
         <a
           href="#/settings"
           className="header-link"
-          title={__('Settings', 'textly')}
+          title={__('Settings', 'texty')}
         >
           <span className="dashicons dashicons-admin-settings"></span>
-          <span className="title">{__('Settings', 'textly')}</span>
+          <span className="title">{__('Settings', 'texty')}</span>
         </a>
       </div>
     </div>

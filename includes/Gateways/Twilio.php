@@ -1,8 +1,7 @@
 <?php
 
-namespace Textly\Gateways;
+namespace Texty\Gateways;
 
-use Textly\Interfaces\Gateway;
 use WP_Error;
 
 /**
@@ -10,7 +9,7 @@ use WP_Error;
  *
  * @see https://www.twilio.com/docs/sms/api/message
  */
-class Twilio implements Gateway {
+class Twilio implements GatewayInterface {
 
     /**
      * API Endpoint
@@ -32,14 +31,56 @@ class Twilio implements Gateway {
     private $token;
 
     /**
-     * [__construct description]
+     * Get the name
+     *
+     * @return string
+     */
+    public function name() {
+        return __( 'Twilio', 'texty' );
+    }
+
+    /**
+     * Set Account SID
      *
      * @param string $sid
-     * @param string $token
+     *
+     * @return void
      */
-    public function __construct( $sid, $token ) {
-        $this->sid    = $sid;
-        $this->token  = $token;
+    public function set_sid( $sid ) {
+        $this->sid = $sid;
+
+        return $this;
+    }
+
+    /**
+     * Set API token
+     *
+     * @param string $token
+     *
+     * @return void
+     */
+    public function set_token( $token ) {
+        $this->$token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get the logo
+     *
+     * @return string
+     */
+    public function logo() {
+        return TEXTY_URL . '/assets/images/twilio.svg';
+    }
+
+    /**
+     * Get the credentials
+     *
+     * @return array
+     */
+    public function get_credential() {
+        return [];
     }
 
     /**

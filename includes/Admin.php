@@ -1,6 +1,6 @@
 <?php
 
-namespace Textly;
+namespace Texty;
 
 /**
  * Manager Class
@@ -21,10 +21,10 @@ class Admin {
      */
     public function register_menu() {
         $menu = add_menu_page(
-            __( 'Textly', 'textly' ),
-            __( 'Textly', 'textly' ),
+            __( 'Texty', 'texty' ),
+            __( 'Texty', 'texty' ),
             'manage_options',
-            'textly',
+            'texty',
             [ $this, 'render_page' ],
             'dashicons-format-chat',
             57
@@ -48,9 +48,9 @@ class Admin {
      * @return void
      */
     public function enqueue_scripts() {
-        $assets = require TEXTLY_DIR . '/dist/admin.asset.php';
+        $assets = require TEXTY_DIR . '/dist/admin.asset.php';
 
-        $url = TEXTLY_URL;
+        $url = TEXTY_URL;
 
         // for local development
         // when webpack "hot module replacement" is enabled, this
@@ -60,15 +60,37 @@ class Admin {
         }
 
         // register scripts
-        wp_register_script( 'textly-vendors', $url . '/dist/vendors.js', $assets['dependencies'], $assets['version'], true );
-        wp_register_script( 'textly-admin', $url . '/dist/admin.js', [ 'textly-vendors' ], $assets['version'], true );
+        wp_register_script( 'texty-vendors', $url . '/dist/vendors.js', $assets['dependencies'], $assets['version'], true );
+        wp_register_script( 'texty-admin', $url . '/dist/admin.js', [ 'texty-vendors' ], $assets['version'], true );
+        wp_localize_script( 'texty-admin', 'texty', $this->localize_script() );
 
         // register styles
-        wp_register_style( 'textly-vendors-css', $url . '/dist/vendors.css', [ 'wp-components' ], $assets['version'] );
-        wp_register_style( 'textly-admin-css', $url . '/dist/style-admin.css', [  'textly-vendors-css' ], $assets['version'] );
+        wp_register_style( 'texty-vendors-css', $url . '/dist/vendors.css', [ 'wp-components' ], $assets['version'] );
+        wp_register_style( 'texty-admin-css', $url . '/dist/style-admin.css', [ 'texty-vendors-css' ], $assets['version'] );
 
         // enqueue scripts and styles
-        wp_enqueue_script( 'textly-admin' );
-        wp_enqueue_style( 'textly-admin-css' );
+        wp_enqueue_script( 'texty-admin' );
+        wp_enqueue_style( 'texty-admin-css' );
+    }
+
+    /**
+     * Get the localize script
+     *
+     * @return array
+     */
+    public function localize_script() {
+        $i18n = [
+            'gateways' => array_map( function ( $item ) { // phpcs:ignore PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket
+                $obj = new $item();
+
+                return [
+                    'name'       => $obj->name(),
+                    'logo'       => $obj->logo(),
+                    'credential' => $obj->get_credential(),
+                ];
+            }, texty()->gateway()->all() ), // phpcs:ignore PEAR.Functions.FunctionCallSignature.CloseBracketLine
+        ];
+
+        return apply_filters( 'textly_localize_script', $i18n );
     }
 }

@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <div className="textly-app">
-        {/* <ToastContainer
+        <ToastContainer
           position="top-right"
           autoClose={5000}
           hideProgressBar={false}
@@ -23,7 +23,7 @@ function App() {
           pauseOnFocusLoss={false}
           draggable
           pauseOnHover
-        /> */}
+        />
 
         <Header />
 

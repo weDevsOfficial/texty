@@ -1,3 +1,40 @@
+.Toastify__toast-container {
+  z-index: 99999;
+
+  .Toastify__toast {
+    padding: 16px 24px;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+  }
+
+  .Toastify__toast--success {
+    background: #fff;
+    color: #616161;
+
+    &::before {
+      content: '\f12a';
+      display: inline-block;
+      font-family: dashicons;
+      font-size: 26px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      color: #52c41a;
+      margin-top: 6px;
+      margin-right: 10px;
+    }
+
+    .Toastify__progress-bar {
+      background-color: rgba(82, 196, 26, 0.75);
+    }
+
+    .Toastify__close-button {
+      color: #aaa;
+    }
+  }
+}
+
 .textly-admin-header {
   background: #fff;
   padding: 15px 15px 15px 22px;
@@ -55,6 +92,72 @@
       &:hover {
         background-color: #ff6a3c;
       }
+    }
+  }
+}
+
+.textly-settings {
+  .settings-row {
+    padding: 30px 0;
+  }
+
+  .settings-row__label label {
+    font-size: 1em;
+    font-weight: 500;
+  }
+
+  .settings-row__field {
+    margin-top: 15px;
+  }
+
+  .settings-row__gateways {
+    display: flex;
+  }
+
+  .gateway-card {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    background: #fff;
+    margin-right: 15px;
+    padding: 20px 15px;
+    border-radius: 5px;
+    box-shadow: rgba(63, 63, 68, 0.05) 0px 0px 0px 1px,
+      rgba(63, 63, 68, 0.15) 0px 1px 3px 0px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.5;
+    position: relative;
+
+    svg.active-icon {
+      display: none;
+      color: #31c48d;
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      height: 2em;
+    }
+
+    &.active {
+      opacity: 1;
+
+      svg.active-icon {
+        display: block;
+      }
+    }
+
+    .gateway-card__logo {
+      height: 32px;
+
+      img {
+        max-width: 90px;
+        max-height: 24px;
+      }
+    }
+
+    .gateway-card__heading {
+      font-size: 1.2em;
+      margin-top: 8px;
     }
   }
 }

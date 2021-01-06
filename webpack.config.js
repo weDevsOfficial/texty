@@ -46,7 +46,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
-    publicPath: '/wp-content/plugins/textly/dist/',
+    publicPath: '/wp-content/plugins/texty/dist/',
     // chunkFilename: 'chunks/[name].js',
     // jsonpFunction: 'dokanCloudWebpack'
   },

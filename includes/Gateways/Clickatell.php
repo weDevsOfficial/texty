@@ -1,8 +1,7 @@
 <?php
 
-namespace Textly\Gateways;
+namespace Texty\Gateways;
 
-use Textly\Interfaces\Gateway;
 use WP_Error;
 
 /**
@@ -10,7 +9,7 @@ use WP_Error;
  *
  * @see https://www.clickatell.com/developers/api-documentation/rest-api-send-message/
  */
-class Clickatell implements Gateway {
+class Clickatell implements GatewayInterface {
 
     /**
      * API Endpoint
@@ -25,12 +24,43 @@ class Clickatell implements Gateway {
     private $api_key;
 
     /**
-     * [__construct description]
+     * Set API key
      *
      * @param string $api_key
+     *
+     * @return void
      */
-    public function __construct( $api_key ) {
+    public function set_api_key( $api_key ) {
         $this->api_key = $api_key;
+
+        return $this;
+    }
+
+    /**
+     * Get the name
+     *
+     * @return string
+     */
+    public function name() {
+        return __( 'Clickatell', 'texty' );
+    }
+
+    /**
+     * Get the logo
+     *
+     * @return string
+     */
+    public function logo() {
+        return TEXTY_URL . '/assets/images/clickatell.svg';
+    }
+
+    /**
+     * Get the credentials
+     *
+     * @return array
+     */
+    public function get_credential() {
+        return [];
     }
 
     /**

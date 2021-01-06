@@ -1,3 +1,28 @@
+.Toastify__toast-container {
+  z-index: 99999; }
+  .Toastify__toast-container .Toastify__toast {
+    padding: 16px 24px;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 2px; }
+  .Toastify__toast-container .Toastify__toast--success {
+    background: #fff;
+    color: #616161; }
+    .Toastify__toast-container .Toastify__toast--success::before {
+      content: '\f12a';
+      display: inline-block;
+      font-family: dashicons;
+      font-size: 26px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      color: #52c41a;
+      margin-top: 6px;
+      margin-right: 10px; }
+    .Toastify__toast-container .Toastify__toast--success .Toastify__progress-bar {
+      background-color: rgba(82, 196, 26, 0.75); }
+    .Toastify__toast-container .Toastify__toast--success .Toastify__close-button {
+      color: #aaa; }
+
 .textly-admin-header {
   background: #fff;
   padding: 15px 15px 15px 22px;
@@ -39,6 +64,52 @@
       padding: 8px 10px; }
       .textly-admin-header .textly-admin-header__menu a.header-link--cta:hover {
         background-color: #ff6a3c; }
+
+.textly-settings .settings-row {
+  padding: 30px 0; }
+
+.textly-settings .settings-row__label label {
+  font-size: 1em;
+  font-weight: 500; }
+
+.textly-settings .settings-row__field {
+  margin-top: 15px; }
+
+.textly-settings .settings-row__gateways {
+  display: flex; }
+
+.textly-settings .gateway-card {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  background: #fff;
+  margin-right: 15px;
+  padding: 20px 15px;
+  border-radius: 5px;
+  box-shadow: rgba(63, 63, 68, 0.05) 0px 0px 0px 1px, rgba(63, 63, 68, 0.15) 0px 1px 3px 0px;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.5;
+  position: relative; }
+  .textly-settings .gateway-card svg.active-icon {
+    display: none;
+    color: #31c48d;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    height: 2em; }
+  .textly-settings .gateway-card.active {
+    opacity: 1; }
+    .textly-settings .gateway-card.active svg.active-icon {
+      display: block; }
+  .textly-settings .gateway-card .gateway-card__logo {
+    height: 32px; }
+    .textly-settings .gateway-card .gateway-card__logo img {
+      max-width: 90px;
+      max-height: 24px; }
+  .textly-settings .gateway-card .gateway-card__heading {
+    font-size: 1.2em;
+    margin-top: 8px; }
 
 
 /*# sourceMappingURL=style-admin.css.map*/

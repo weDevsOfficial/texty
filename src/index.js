@@ -8,4 +8,4 @@ import './style.scss';
 var mountNode = document.getElementById('textly-app');
 ReactDOM.render(<App />, mountNode);
 
-menuFix('textly');
+menuFix('texty');
