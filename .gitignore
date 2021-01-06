@@ -1,2 +1,13 @@
 vendor
 .DS_Store
+node_modules
+yarn-error.log
+dev-config.json
+
+# dist folder
+dist/*
+!dist/admin.asset.php
+!dist/admin.js
+!dist/style-admin.css
+!dist/vendors.css
+!dist/vendors.js

@@ -23,7 +23,9 @@ class Textly {
      * Initialize
      */
     public function __construct() {
-        // code...
+        $this->define_constants();
+
+        add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
     }
 
     /**
@@ -40,6 +42,27 @@ class Textly {
         }
 
         return $instance;
+    }
+
+    /**
+     * Initialize the plugin
+     *
+     * @return void
+     */
+    public function init_plugin() {
+        if ( is_admin() ) {
+            new Textly\Admin();
+        }
+    }
+
+    /**
+     * Define constants
+     *
+     * @return void
+     */
+    private function define_constants() {
+        define( 'TEXTLY_DIR', __DIR__ );
+        define( 'TEXTLY_URL', plugins_url( '', __FILE__ ) );
     }
 
     /**
