@@ -1,0 +1,150 @@
+{
+   "domain": "messages",
+   "locale_data": {
+      "messages": {
+         "": {
+            "domain": "messages"
+         },
+         "Texty": [
+            null,
+            ""
+         ],
+         "https://textywp.com": [
+            null,
+            ""
+         ],
+         "Send SMS to users": [
+            null,
+            ""
+         ],
+         "weDevs": [
+            null,
+            ""
+         ],
+         "https://tareq.co": [
+            null,
+            ""
+         ],
+         "The from phone number": [
+            null,
+            ""
+         ],
+         "The selected gateway": [
+            null,
+            ""
+         ],
+         "The to phone number": [
+            null,
+            ""
+         ],
+         "Clickatell": [
+            null,
+            ""
+         ],
+         "Twilio": [
+            null,
+            ""
+         ],
+         "Vonage (nexmo)": [
+            null,
+            ""
+         ],
+         "Tools": [
+            null,
+            ""
+         ],
+         "Settings": [
+            null,
+            ""
+         ],
+         "Connected": [
+            null,
+            ""
+         ],
+         "Not connected": [
+            null,
+            ""
+         ],
+         "Send SMS with Twilio. Follow <a href=\"%s\" target=\"_blank\">this link</a> to get the Account SID and Token from Twilio.": [
+            null,
+            ""
+         ],
+         "Account SID": [
+            null,
+            ""
+         ],
+         "Auth Token": [
+            null,
+            ""
+         ],
+         "Vonage": [
+            null,
+            ""
+         ],
+         "Send SMS with Vonage (formerly Nexmo). Follow <a href=\"%s\" target=\"_blank\">this link</a> to get the API Key and Secret from Vonage.": [
+            null,
+            ""
+         ],
+         "API Key": [
+            null,
+            ""
+         ],
+         "API Secret": [
+            null,
+            ""
+         ],
+         "Changes have been saved": [
+            null,
+            ""
+         ],
+         "From Number": [
+            null,
+            ""
+         ],
+         "The phone number all messages will go from. Make sure your gateway accepts the format.": [
+            null,
+            ""
+         ],
+         "Gateways": [
+            null,
+            ""
+         ],
+         "Saving...": [
+            null,
+            ""
+         ],
+         "Save Changes": [
+            null,
+            ""
+         ],
+         "Message has been sent.": [
+            null,
+            ""
+         ],
+         "Error, message could not be sent.": [
+            null,
+            ""
+         ],
+         "Test Message": [
+            null,
+            ""
+         ],
+         "Test Number": [
+            null,
+            ""
+         ],
+         "Enter a phone number to test the SMS sending.": [
+            null,
+            ""
+         ],
+         "Sending...": [
+            null,
+            ""
+         ],
+         "Send Test": [
+            null,
+            ""
+         ]
+      }
+   }
+}

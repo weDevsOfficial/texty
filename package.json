@@ -12,8 +12,8 @@
     "build": "wp-scripts build",
     "lint:js": "wp-scripts lint-js",
     "packages-update": "wp-scripts packages-update",
-    "makepot": "wp i18n make-pot --exclude='dist,node_modules,vendors' . --headers='{\"Last-Translator\":\"support@wedevs.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/weDevsOfficial/textly/issues\"}' --file-comment=\"Copyright (c) $(date +'%Y') weDevs Pte. Ltd. All Rights Reserved.\" languages/textly.pot",
-    "pot2json": "po2json languages/textly.pot languages/textly.json --format jed --pretty"
+    "makepot": "wp i18n make-pot --exclude='dist,node_modules,vendors' . --headers='{\"Last-Translator\":\"support@wedevs.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/weDevsOfficial/texty/issues\"}' --file-comment=\"Copyright (c) $(date +'%Y') weDevs Pte. Ltd. All Rights Reserved.\" languages/texty.pot",
+    "pot2json": "po2json languages/texty.pot languages/texty.json --format jed --pretty"
   },
   "run-if-changed": {
     "yarn.lock": "yarn install --prefer-offline --pure-lockfile"

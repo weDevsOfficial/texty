@@ -1,18 +1,15 @@
 <?php
 /**
- * Plugin Name: Texty - SMS Plugin for WordPress
+ * Plugin Name: Texty
  * Description: Send SMS to users
  * Plugin URI: https://textywp.com
  * Author: weDevs
  * Author URI: https://tareq.co
- * Version: 1.0
+ * Version: 0.1
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: texty
  */
-
-use PHP_CodeSniffer\Generators\Text;
-
 defined( 'ABSPATH' ) || exit;
 
 require __DIR__ . '/vendor/autoload.php';
@@ -20,7 +17,14 @@ require __DIR__ . '/vendor/autoload.php';
 /**
  * Textly Class
  */
-class Texty {
+final class Texty {
+
+    /**
+     * Instances array
+     *
+     * @var array
+     */
+    private $instances = [];
 
     /**
      * Initialize
@@ -74,17 +78,34 @@ class Texty {
     /**
      * Access to gateway manager
      *
-     * @return \WeDevs\Texty\Gateways
+     * @return Texty\Gateways
      */
     public function gateway() {
-        return new \Texty\Gateways();
+        if ( ! isset( $this->instances['gateway'] ) ) {
+            $this->instances['gateway'] = new \Texty\Gateways();
+        }
+
+        return $this->instances['gateway'];
+    }
+
+    /**
+     * Access to gateway manager
+     *
+     * @return Texty\Settings
+     */
+    public function settings() {
+        if ( ! isset( $this->instances['settings'] ) ) {
+            $this->instances['settings'] = new \Texty\Settings();
+        }
+
+        return $this->instances['settings'];
     }
 }
 
 /**
  * Return the instance
  *
- * @return \Textly
+ * @return \Texty
  */
 function texty() {
     return Texty::instance();

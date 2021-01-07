@@ -17,52 +17,12 @@ class Twilio implements GatewayInterface {
     const ENDPOINT = 'https://api.twilio.com/2010-04-01/Accounts/{sid}/Messages.json';
 
     /**
-     * The Account SID
-     *
-     * @var string
-     */
-    private $sid;
-
-    /**
-     * Account Auth Token
-     *
-     * @var string
-     */
-    private $token;
-
-    /**
      * Get the name
      *
      * @return string
      */
     public function name() {
         return __( 'Twilio', 'texty' );
-    }
-
-    /**
-     * Set Account SID
-     *
-     * @param string $sid
-     *
-     * @return void
-     */
-    public function set_sid( $sid ) {
-        $this->sid = $sid;
-
-        return $this;
-    }
-
-    /**
-     * Set API token
-     *
-     * @param string $token
-     *
-     * @return void
-     */
-    public function set_token( $token ) {
-        $this->$token = $token;
-
-        return $this;
     }
 
     /**
@@ -91,19 +51,21 @@ class Twilio implements GatewayInterface {
      *
      * @return WP_Error|true
      */
-    public function send( $to, $message, $from ) {
+    public function send( $to, $message ) {
+        $creds = texty()->settings()->get( 'twilio' );
+
         $args = [
             'headers' => [
-                'Authorization' => 'Basic ' . base64_encode( $this->sid . ':' . $this->token ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+                'Authorization' => 'Basic ' . base64_encode( $creds['sid'] . ':' . $creds['token'] ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
             ],
             'body' => [
-                'From' => $from,
+                'From' => texty()->settings()->from(),
                 'To'   => $to,
                 'Body' => $message,
             ],
         ];
 
-        $endpoint = str_replace( '{sid}', $this->sid, self::ENDPOINT );
+        $endpoint = str_replace( '{sid}', $creds['sid'], self::ENDPOINT );
         $response = wp_remote_post( $endpoint, $args );
         $body     = json_decode( wp_remote_retrieve_body( $response ) );
 
@@ -112,5 +74,40 @@ class Twilio implements GatewayInterface {
         }
 
         return true;
+    }
+
+    /**
+     * Validate a REST API request
+     *
+     * @param WP_REST_Request $request
+     *
+     * @return WP_Error|true
+     */
+    public function validate( $request ) {
+        $creds = $request->get_param( 'twilio' );
+
+        $args = [
+            'headers' => [
+                'Authorization' => 'Basic ' . base64_encode( $creds['sid'] . ':' . $creds['token'] ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+            ],
+        ];
+
+        $endpoint      = 'https://api.twilio.com/2010-04-01/Accounts.json';
+        $response      = wp_remote_get( $endpoint, $args );
+        $body          = json_decode( wp_remote_retrieve_body( $response ) );
+        $response_code = wp_remote_retrieve_response_code( $response );
+
+        if ( 401 === $response_code ) {
+            return new WP_Error(
+                $body->code,
+                $body->detail ? $body->detail : $body->message,
+                $body
+            );
+        }
+
+        return [
+            'sid'   => $creds['sid'],
+            'token' => $creds['token'],
+        ];
     }
 }

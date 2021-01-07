@@ -64,14 +64,14 @@
 
   .textly-admin-header__menu {
     flex-basis: 100%;
-    text-align: right;
+    // text-align: right;
     padding-right: 6px;
 
     a {
       text-decoration: none;
-      margin-left: 10px;
+      margin-right: 10px;
       color: #4c4c4c;
-      padding: 8px 5px;
+      padding: 8px 10px;
 
       &:hover {
         background-color: #f5f5f5;
@@ -96,9 +96,71 @@
   }
 }
 
+.textly {
+  .mt-1 {
+    margin-top: 5px;
+  }
+
+  .mt-2 {
+    margin-top: 10px;
+  }
+
+  .mt-3 {
+    margin-top: 15px;
+  }
+
+  .mt-4 {
+    margin-top: 20px;
+  }
+
+  .components-base-control {
+    margin-bottom: 15px;
+  }
+
+  .components-base-control__label {
+    display: block;
+    font-weight: 500;
+  }
+
+  .components-text-control__input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 7px 12px;
+    color: #333;
+    display: block;
+    max-width: 400px;
+  }
+
+  .components-base-control__help {
+    margin-top: 5px;
+    font-size: 1em;
+  }
+
+  .components-notice {
+    margin-left: 0;
+    margin-right: 0;
+
+    .dashicon {
+      margin-right: 10px;
+    }
+
+    .dashicons-yes-alt {
+      color: #4ab866;
+    }
+
+    .dashicons-dismiss {
+      color: #cc1818;
+    }
+  }
+}
+
 .textly-settings {
+  .textly-settings__form {
+    margin-top: 30px;
+  }
+
   .settings-row {
-    padding: 30px 0;
+    padding-bottom: 20px;
   }
 
   .settings-row__label label {
@@ -158,6 +220,24 @@
     .gateway-card__heading {
       font-size: 1.2em;
       margin-top: 8px;
+    }
+  }
+
+  .submit-area {
+    // margin-top: 25px;
+  }
+}
+
+.textly-tools {
+  .textly-settings__form {
+    display: flex;
+
+    fieldset {
+      margin-right: 15px;
+    }
+
+    button {
+      margin-top: 23px;
     }
   }
 }

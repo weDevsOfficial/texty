@@ -1,10 +1,11 @@
 /**
  * External dependencies
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
+import apiFetch from '@wordpress/api-fetch';
+import { Button, Spinner, TextControl } from '@wordpress/components';
 import classNames from 'classnames';
-import { Button, TextControl } from '@wordpress/components';
 import { toast } from 'react-toastify';
 
 /**
@@ -12,21 +13,40 @@ import { toast } from 'react-toastify';
  */
 import ActiveIcon from '../components/ActiveIcon';
 import Twilio from '../components/Twilio';
+import Vonage from '../components/Vonage';
 
 function Settings() {
+  const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [settings, setSettings] = useState({
     gateway: 'twilio',
+    from: '',
     twilio: {
       sid: '',
       token: '',
     },
+    vonage: {
+      key: '',
+      secret: '',
+    },
   });
 
-  const setGateway = (gateway) => {
+  useEffect(() => {
+    setIsLoading(true);
+
+    apiFetch({
+      path: '/texty/v1/settings',
+    }).then((resp) => {
+      setSettings(resp);
+      setIsLoading(false);
+    });
+    return () => {};
+  }, []);
+
+  const setOption = (option, value) => {
     setSettings({
       ...settings,
-      ['gateway']: gateway,
+      [option]: value,
     });
   };
 
@@ -45,18 +65,47 @@ function Settings() {
 
     setIsSaving(true);
 
-    setTimeout(() => {
-      setIsSaving(false);
-      toast.success(__('Changes have been saved', 'texty'));
-    }, 2000);
+    apiFetch({
+      path: '/texty/v1/settings',
+      method: 'POST',
+      data: settings,
+    })
+      .then((resp) => {
+        setIsSaving(false);
+
+        toast.success(__('Changes have been saved', 'texty'));
+      })
+      .catch((err) => {
+        setIsSaving(false);
+        console.log(err);
+        toast.error(err.message);
+      });
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="textly-settings">
       <h1>{__('Settings', 'texty')}</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="textly-settings__form">
         <fieldset disabled={isSaving}>
+          <div className="settings-row">
+            <TextControl
+              label={__('From Number', 'texty')}
+              value={settings.from}
+              type="tel"
+              onChange={(value) => setOption('from', value)}
+              help={__(
+                'The phone number all messages will go from. Make sure your gateway accepts the format.',
+                'texty'
+              )}
+              required
+            />
+          </div>
+
           <div className="settings-row">
             <div className="settings-row__label">
               <label>{__('Gateways', 'texty')}</label>
@@ -72,7 +121,7 @@ function Settings() {
                         active: key === settings.gateway,
                       })}
                       key={key}
-                      onClick={() => setGateway(key)}
+                      onClick={() => setOption('gateway', key)}
                     >
                       <ActiveIcon />
                       <div className="gateway-card__logo">
@@ -89,6 +138,10 @@ function Settings() {
 
           {settings.gateway === 'twilio' && (
             <Twilio settings={settings.twilio} setOption={setCredential} />
+          )}
+
+          {settings.gateway === 'vonage' && (
+            <Vonage settings={settings.vonage} setOption={setCredential} />
           )}
 
           <div className="submit-area">

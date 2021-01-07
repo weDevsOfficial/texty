@@ -2,6 +2,7 @@
 
 namespace Texty;
 
+use Texty\Gateways\GatewayInterface;
 use WP_Error;
 
 /**
@@ -14,24 +15,33 @@ class Gateways {
      *
      * @param string $to      The TO phone number
      * @param string $message The message to send
-     * @param string $from    The From address
      *
      * @return bool|WP_Error
      */
-    public function send( $to, $message, $from ) {
-        return $this->active_gateway()->send( $to, $message, $from );
+    public function send( $to, $message ) {
+        $gateway = $this->active_gateway();
+
+        if ( $gateway instanceof GatewayInterface ) {
+            return $gateway->send( $to, $message );
+        }
+
+        return false;
     }
 
     /**
      * Get the active gateway
      *
-     * @return Interfaces\Gateway
+     * @return Gateways\GatewayInterface|false
      */
     public function active_gateway() {
-        $gateways = $this->all();
-        $active   = get_option( 'textly_options', [] );
+        $gateways  = $this->all();
+        $gateway   = texty()->settings()->gateway();
 
-        return new $active();
+        if ( $gateway && array_key_exists( $gateway, $gateways ) ) {
+            return new $gateways[ $gateway ]();
+        }
+
+        return false;
     }
 
     /**
@@ -42,8 +52,8 @@ class Gateways {
     public function all() {
         $gateways = [
             'twilio'     => __NAMESPACE__ . '\Gateways\Twilio',
-            'nexmo'      => __NAMESPACE__ . '\Gateways\Nexmo',
-            'clickatell' => __NAMESPACE__ . '\Gateways\Clickatell',
+            'vonage'     => __NAMESPACE__ . '\Gateways\Vonage',
+            // 'clickatell' => __NAMESPACE__ . '\Gateways\Clickatell',
         ];
 
         return apply_filters( 'textly_available_gateways', $gateways );

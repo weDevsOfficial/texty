@@ -39,7 +39,7 @@ class Admin {
      * @return void
      */
     public function render_page() {
-        echo '<div id="textly-app"></div>';
+        echo '<div id="texty-app"></div>';
     }
 
     /**
@@ -84,9 +84,8 @@ class Admin {
                 $obj = new $item();
 
                 return [
-                    'name'       => $obj->name(),
-                    'logo'       => $obj->logo(),
-                    'credential' => $obj->get_credential(),
+                    'name' => $obj->name(),
+                    'logo' => $obj->logo(),
                 ];
             }, texty()->gateway()->all() ), // phpcs:ignore PEAR.Functions.FunctionCallSignature.CloseBracketLine
         ];

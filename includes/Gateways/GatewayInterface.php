@@ -9,11 +9,10 @@ interface GatewayInterface {
      *
      * @param string $to
      * @param string $message
-     * @param string $from
      *
      * @return void
      */
-    public function send( $to, $message, $from );
+    public function send( $to, $message );
 
     /**
      * Returns URL to the logo
@@ -35,4 +34,13 @@ interface GatewayInterface {
      * @return array
      */
     public function get_credential();
+
+    /**
+     * Validate a REST API request
+     *
+     * @param WP_REST_Request $request
+     *
+     * @return WP_Error|true
+     */
+    public function validate( $request );
 }

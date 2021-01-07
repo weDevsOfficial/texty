@@ -71,14 +71,14 @@ class Clickatell implements GatewayInterface {
      *
      * @return WP_Error|true
      */
-    public function send( $to, $message, $from ) {
+    public function send( $to, $message ) {
         $args = [
             'headers' => [
                 'Authorization' => $this->api_key,
             ],
             'body' => wp_json_encode(
                 [
-                    'from'    => $from,
+                    'from'    => texty()->settings()->from(),
                     'to'      => [ $to ],
                     'content' => $message,
                 ]
@@ -88,5 +88,16 @@ class Clickatell implements GatewayInterface {
         $response = wp_remote_post( self::ENDPOINT, $args );
 
         return true;
+    }
+
+    /**
+     * Validate a REST API request
+     *
+     * @param WP_REST_Request $request
+     *
+     * @return WP_Error|true
+     */
+    public function validate( $request ) {
+        $creds = $request->get_param( 'twilio' );
     }
 }

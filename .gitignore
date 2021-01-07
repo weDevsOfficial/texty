@@ -3,6 +3,7 @@ vendor
 node_modules
 yarn-error.log
 dev-config.json
+build
 
 # dist folder
 dist/*

@@ -2,10 +2,17 @@
 
 namespace Texty\Api;
 
-use WP_REST_Controller;
+use Texty\Settings as TextySettings;
 use WP_REST_Server;
 
-class Settings extends WP_REST_Controller {
+class Settings extends Base {
+
+    /**
+     * Settings option name
+     *
+     * @var string
+     */
+    private $option_name = 'texty_options';
 
     /**
      * Initialize
@@ -30,29 +37,18 @@ class Settings extends WP_REST_Controller {
                 [
                     'methods'             => WP_REST_Server::READABLE,
                     'callback'            => [ $this, 'get_items' ],
-                    'permission_callback' => [ $this, 'get_items_permissions_check' ],
+                    'permission_callback' => [ $this, 'admin_permissions_check' ],
                     'args'                => [],
                 ],
                 [
                     'methods'             => WP_REST_Server::EDITABLE,
                     'callback'            => [ $this, 'update_items' ],
                     'args'                => $this->get_endpoint_args_for_item_schema( WP_REST_Server::EDITABLE ),
-                    'permission_callback' => [ $this, 'get_items_permissions_check' ],
+                    'permission_callback' => [ $this, 'admin_permissions_check' ],
                 ],
                 'schema' => [ $this, 'get_item_schema' ],
             ]
         );
-    }
-
-    /**
-     * Permission check
-     *
-     * @param WP_REST_Request $request
-     *
-     * @return WP_Error|bool
-     */
-    public function get_items_permissions_check( $request ) {
-        return current_user_can( 'manage_options' );
     }
 
     /**
@@ -63,7 +59,9 @@ class Settings extends WP_REST_Controller {
      * @return WP_Rest_Response|WP_Error
      */
     public function get_items( $request ) {
-        return [];
+        $settings = texty()->settings()->all();
+
+        return rest_ensure_response( $settings );
     }
 
     /**
@@ -74,7 +72,29 @@ class Settings extends WP_REST_Controller {
      * @return WP_Error|WP_REST_Response
      */
     public function update_items( $request ) {
-        return [];
+        $from       = $request->get_param( 'from' );
+        $gateway    = $request->get_param( 'gateway' );
+        $registered = texty()->gateway()->all();
+
+        $value = [
+            'from'    => $from,
+            'gateway' => $gateway,
+        ];
+
+        // create a new gateway instance
+        $object   = new $registered[ $gateway ]();
+        $response = $object->validate( $request );
+
+        if ( is_wp_error( $response ) ) {
+            return $response;
+        }
+
+        // set the credentials with the gateway key
+        $value[$gateway] = $response;
+
+        update_option( TextySettings::option_key, $value, false );
+
+        return $this->get_items( $request );
     }
 
     /**
@@ -84,10 +104,16 @@ class Settings extends WP_REST_Controller {
      */
     public function get_registered_items() {
         return [
+            'from' => [
+                'description' => __( 'The from phone number', 'texty' ),
+                'type'        => 'string',
+                'required'    => true,
+            ],
             'gateway' => [
                 'description' => __( 'The selected gateway', 'texty' ),
-                'type'        => 'string',
-                'context'     => [ 'edit' ],
+                'type'        => 'enum',
+                'enum'        => array_keys( texty()->gateway()->all() ),
+                'required'    => true,
             ],
         ];
     }

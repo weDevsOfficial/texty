@@ -8,31 +8,31 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Settings from './pages/Settings';
+import Tools from './pages/Tools';
 
 function App() {
   return (
     <Router>
-      <div className="textly-app">
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss={false}
-          draggable
-          pauseOnHover
-        />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
 
-        <Header />
+      <Header />
 
-        <div className="wrap">
-          <Switch>
-            <Route path="/settings" component={Settings} />
-            <Route path="/" exact component={Home} />
-          </Switch>
-        </div>
+      <div className="wrap textly">
+        <Switch>
+          <Route path="/settings" component={Settings} />
+          <Route path="/tools" component={Tools} />
+          <Route path="/" exact component={Settings} />
+        </Switch>
       </div>
     </Router>
   );

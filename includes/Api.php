@@ -20,6 +20,8 @@ class Api {
     public function __construct() {
         $this->classes = [
             Api\Settings::class,
+            Api\Tools::class,
+            Api\Status::class,
         ];
 
         add_action( 'rest_api_init', [ $this, 'init_api' ] );

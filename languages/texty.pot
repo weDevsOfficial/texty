@@ -1,0 +1,161 @@
+# Copyright (c) 2021 weDevs Pte. Ltd. All Rights Reserved.
+msgid ""
+msgstr ""
+"Project-Id-Version: Texty 0.1\n"
+"Report-Msgid-Bugs-To: https://github.com/weDevsOfficial/texty/issues\n"
+"Last-Translator: support@wedevs.com\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-07T11:20:57+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: texty\n"
+
+#. Plugin Name of the plugin
+#: includes/Admin.php:24
+#: includes/Admin.php:25
+msgid "Texty"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://textywp.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "Send SMS to users"
+msgstr ""
+
+#. Author of the plugin
+msgid "weDevs"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://tareq.co"
+msgstr ""
+
+#: includes/Api/Settings.php:108
+msgid "The from phone number"
+msgstr ""
+
+#: includes/Api/Settings.php:113
+msgid "The selected gateway"
+msgstr ""
+
+#: includes/Api/Tools.php:35
+msgid "The to phone number"
+msgstr ""
+
+#: includes/Gateways/Clickatell.php:45
+msgid "Clickatell"
+msgstr ""
+
+#: includes/Gateways/Twilio.php:25
+#: src/components/Twilio.js:8
+msgid "Twilio"
+msgstr ""
+
+#: includes/Gateways/Vonage.php:25
+msgid "Vonage (nexmo)"
+msgstr ""
+
+#: src/components/Header.js:15
+#: src/components/Header.js:17
+#: src/pages/Tools.js:52
+msgid "Tools"
+msgstr ""
+
+#: src/components/Header.js:23
+#: src/components/Header.js:26
+#: src/pages/Settings.js:91
+msgid "Settings"
+msgstr ""
+
+#: src/components/Status.js:33
+msgid "Connected"
+msgstr ""
+
+#: src/components/Status.js:33
+msgid "Not connected"
+msgstr ""
+
+#: src/components/Twilio.js:16
+msgid "Send SMS with Twilio. Follow <a href=\"%s\" target=\"_blank\">this link</a> to get the Account SID and Token from Twilio."
+msgstr ""
+
+#: src/components/Twilio.js:28
+msgid "Account SID"
+msgstr ""
+
+#: src/components/Twilio.js:35
+msgid "Auth Token"
+msgstr ""
+
+#: src/components/Vonage.js:8
+msgid "Vonage"
+msgstr ""
+
+#: src/components/Vonage.js:16
+msgid "Send SMS with Vonage (formerly Nexmo). Follow <a href=\"%s\" target=\"_blank\">this link</a> to get the API Key and Secret from Vonage."
+msgstr ""
+
+#: src/components/Vonage.js:28
+msgid "API Key"
+msgstr ""
+
+#: src/components/Vonage.js:35
+msgid "API Secret"
+msgstr ""
+
+#: src/pages/Settings.js:76
+msgid "Changes have been saved"
+msgstr ""
+
+#: src/pages/Settings.js:97
+msgid "From Number"
+msgstr ""
+
+#: src/pages/Settings.js:101
+msgid "The phone number all messages will go from. Make sure your gateway accepts the format."
+msgstr ""
+
+#: src/pages/Settings.js:111
+msgid "Gateways"
+msgstr ""
+
+#: src/pages/Settings.js:150
+msgid "Saving..."
+msgstr ""
+
+#: src/pages/Settings.js:151
+msgid "Save Changes"
+msgstr ""
+
+#: src/pages/Tools.js:34
+msgid "Message has been sent."
+msgstr ""
+
+#: src/pages/Tools.js:37
+msgid "Error, message could not be sent."
+msgstr ""
+
+#: src/pages/Tools.js:57
+msgid "Test Message"
+msgstr ""
+
+#: src/pages/Tools.js:62
+msgid "Test Number"
+msgstr ""
+
+#: src/pages/Tools.js:66
+msgid "Enter a phone number to test the SMS sending."
+msgstr ""
+
+#: src/pages/Tools.js:75
+msgid "Sending..."
+msgstr ""
+
+#: src/pages/Tools.js:75
+msgid "Send Test"
+msgstr ""
