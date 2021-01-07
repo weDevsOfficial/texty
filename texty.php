@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Texty
- * Description: Send SMS to users
- * Plugin URI: https://textywp.com
+ * Description: SMS Notification for WordPress
+ * Plugin URI: https://tareq.co
  * Author: weDevs
  * Author URI: https://tareq.co
  * Version: 0.1

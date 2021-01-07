@@ -20,6 +20,8 @@ class Admin {
      * @return void
      */
     public function register_menu() {
+        $position = apply_filters( 'text_menu_position', 58 );
+
         $menu = add_menu_page(
             __( 'Texty', 'texty' ),
             __( 'Texty', 'texty' ),
@@ -27,7 +29,7 @@ class Admin {
             'texty',
             [ $this, 'render_page' ],
             'dashicons-format-chat',
-            57
+            $position
         );
 
         add_action( 'admin_print_scripts-' . $menu, [ $this, 'enqueue_scripts' ] );

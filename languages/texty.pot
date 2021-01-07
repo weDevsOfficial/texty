@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-07T11:20:57+00:00\n"
+"POT-Creation-Date: 2021-01-07T11:48:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: texty\n"
@@ -20,19 +20,16 @@ msgid "Texty"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://textywp.com"
+#. Author URI of the plugin
+msgid "https://tareq.co"
 msgstr ""
 
 #. Description of the plugin
-msgid "Send SMS to users"
+msgid "SMS Notification for WordPress"
 msgstr ""
 
 #. Author of the plugin
 msgid "weDevs"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://tareq.co"
 msgstr ""
 
 #: includes/Api/Settings.php:108

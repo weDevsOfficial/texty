@@ -15,6 +15,7 @@ GREEN_BOLD='\033[1;32m'
 RED_BOLD='\033[1;31m'
 YELLOW_BOLD='\033[1;33m'
 COLOR_RESET='\033[0m'
+
 error() {
     echo -e "\n${RED_BOLD}$1${COLOR_RESET}\n"
 }
@@ -45,7 +46,7 @@ yarn pot2json
 
 # Copy all files
 status "Copying files... ✌️"
-FILES=(texty.php readme.txt dist includes languages composer.json composer.lock)
+FILES=(texty.php readme.txt dist includes assets languages composer.json composer.lock)
 
 for file in ${FILES[@]}; do
     cp -R $file $BUILD_DIR
