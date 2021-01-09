@@ -11,6 +11,7 @@
     "start": "wp-scripts start",
     "build": "wp-scripts build",
     "lint:js": "wp-scripts lint-js",
+    "readme": "wp-readme-to-md",
     "packages-update": "wp-scripts packages-update",
     "makepot": "wp i18n make-pot --exclude='dist,node_modules,vendors' . --headers='{\"Last-Translator\":\"support@wedevs.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/weDevsOfficial/texty/issues\"}' --file-comment=\"Copyright (c) $(date +'%Y') weDevs Pte. Ltd. All Rights Reserved.\" languages/texty.pot",
     "pot2json": "po2json languages/texty.pot languages/texty.json --format jed --pretty"
@@ -68,6 +69,7 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.1",
-    "webpack-livereload-plugin": "^2.3.0"
+    "webpack-livereload-plugin": "^2.3.0",
+    "wp-readme-to-markdown": "^1.0.1"
   }
 }

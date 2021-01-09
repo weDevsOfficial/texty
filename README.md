@@ -1,17 +1,17 @@
-=== Texty - SMS Notification for WordPress ===
-Contributors: tareq1988
-Donate link: https://tareq.co/donate/
-Tags: sms, text, notification, twilio, nexmo, vonage
-Requires at least: 4.0
-Tested up to: 5.6
-Stable tag: 0.1
-Requires PHP: 5.6
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+# Texty - SMS Notification for WordPress #
+**Contributors:** [tareq1988](https://profiles.wordpress.org/tareq1988/)  
+**Donate link:** https://tareq.co/donate/  
+**Tags:** sms, text, notification, twilio, nexmo, vonage  
+**Requires at least:** 4.0  
+**Tested up to:** 5.6  
+**Stable tag:** 0.1  
+**Requires PHP:** 5.6  
+**License:** GPLv2 or later  
+**License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
 Texty is a lightweight SMS notification plugin for WordPress.
 
-== Description ==
+## Description ##
 
 Texty is a lightweight SMS notification plugin for WordPress. 
 
@@ -50,40 +50,40 @@ As Texty doesn't have any capability to send a text by itself, it integrates wit
 - Twilio - [Terms of Service](https://www.twilio.com/legal/tos) and [Privacy Policy](https://www.twilio.com/legal/privacy)
 - Vonage - [Legal](https://www.vonage.com/legal/) and [Privacy Policy](https://www.vonage.com/legal/privacy-policy/)
 
-== Installation ==
+## Installation ##
 
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions ##
 
-= Which gateways does Texty support? =
+### Which gateways does Texty support? ###
 
 Currently, it supports Twilio and Nexmo. More gateway support is coming soon.
 
-= Does it support WooCommerce? =
+### Does it support WooCommerce? ###
 
 At this moment it doesn't. We are working to make it work with WooCommerce.
 
-= Does it support Dokan? =
+### Does it support Dokan? ###
 
 No, it doesn't. But soon it'll support Dokan.
 
-= Can I do X? =
+### Can I do X? ###
 
 Well, it depends. Let us know what you want, we might consider adding that feature.
 
 
-== Screenshots ==
+## Screenshots ##
 
 1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif).
 2. This is the second screen shot
 
-== Changelog ==
+## Changelog ##
 
-= v0.1 = 
+### v0.1 ###
 
 - Initial Release
 
-== Upgrade Notice ==
+## Upgrade Notice ##
 
 Nothing here right now

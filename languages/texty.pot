@@ -8,20 +8,19 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-07T11:48:31+00:00\n"
+"POT-Creation-Date: 2021-01-08T03:41:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: texty\n"
 
 #. Plugin Name of the plugin
-#: includes/Admin.php:24
-#: includes/Admin.php:25
+#: includes/Admin.php:26
+#: includes/Admin.php:27
 msgid "Texty"
 msgstr ""
 
 #. Plugin URI of the plugin
-#. Author URI of the plugin
-msgid "https://tareq.co"
+msgid "https://github.com/weDevsOfficial/texty"
 msgstr ""
 
 #. Description of the plugin
@@ -30,6 +29,10 @@ msgstr ""
 
 #. Author of the plugin
 msgid "weDevs"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://tareq.co"
 msgstr ""
 
 #: includes/Api/Settings.php:108

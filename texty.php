@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Texty
  * Description: SMS Notification for WordPress
- * Plugin URI: https://tareq.co
+ * Plugin URI: https://github.com/weDevsOfficial/texty
  * Author: weDevs
  * Author URI: https://tareq.co
  * Version: 0.1

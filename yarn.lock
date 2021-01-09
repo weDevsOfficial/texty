@@ -12930,6 +12930,13 @@ worker-farm@^1.7.0:
   dependencies:
     errno "~0.1.7"
 
+wp-readme-to-markdown@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/wp-readme-to-markdown/-/wp-readme-to-markdown-1.0.1.tgz#6182faf2c745f73c478fcf01791ed1e416ac5879"
+  integrity sha512-5ZmQzhNZIBcTLYhIovyhBXucDD+JUhL7YAqfmLzPudCLFRodSLbsWtoiYREG/Z55TN1Zn+Rko5eKH965m1L8SA==
+  dependencies:
+    minimist "^1.2.0"
+
 wrap-ansi@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-5.1.0.tgz#1fd1f67235d5b6d0fee781056001bfb694c03b09"
