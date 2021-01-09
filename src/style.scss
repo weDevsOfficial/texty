@@ -1,49 +1,40 @@
-.Toastify__toast-container {
-  z-index: 99999;
+@import './styles/toastify.scss';
 
-  .Toastify__toast {
-    padding: 16px 24px;
-    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
-      0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
-    border-radius: 2px;
-  }
+.wrap {
+  margin-top: 25px;
+}
 
-  .Toastify__toast--success {
-    background: #fff;
-    color: #616161;
+.texty-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 70rem;
+}
 
-    &::before {
-      content: '\f12a';
-      display: inline-block;
-      font-family: dashicons;
-      font-size: 26px;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      color: #52c41a;
-      margin-top: 6px;
-      margin-right: 10px;
-    }
+.texty-card {
+  color: #141b38;
+  background-color: #fff;
+  border: 1px solid #e8e8eb;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin: 30px 0;
 
-    .Toastify__progress-bar {
-      background-color: rgba(82, 196, 26, 0.75);
-    }
-
-    .Toastify__close-button {
-      color: #aaa;
-    }
+  .texty-card__body {
+    padding: 30px;
+    position: relative;
   }
 }
 
-.textly-admin-header {
+.texty-header-wrap {
   background: #fff;
-  padding: 15px 15px 15px 22px;
   margin: 0 0 0 -20px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
 
-  .textly-admin-header__logo {
+  .texty-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+  }
+
+  .texty-admin-header__logo {
     display: flex;
     align-items: flex-end;
 
@@ -62,9 +53,9 @@
     }
   }
 
-  .textly-admin-header__menu {
+  .texty-admin-header__menu {
     flex-basis: 100%;
-    // text-align: right;
+    text-align: right;
     padding-right: 6px;
 
     a {
@@ -96,7 +87,7 @@
   }
 }
 
-.textly {
+.texty {
   .mt-1 {
     margin-top: 5px;
   }
@@ -134,6 +125,27 @@
   .components-base-control__help {
     margin-top: 5px;
     font-size: 1em;
+    // color: #006eef;
+  }
+
+  .components-button {
+    border-radius: 4px;
+    // font-weight: 600;
+
+    &.is-primary {
+      background-color: #006eef;
+      padding: 0 18px;
+
+      &:hover {
+        background-color: darken(#006eef, 10%);
+      }
+    }
+
+    &.large {
+      font-size: 16px;
+      padding: 0 24px;
+      height: 48px;
+    }
   }
 
   .components-notice {
@@ -156,7 +168,7 @@
 
 .textly-settings {
   .textly-settings__form {
-    margin-top: 30px;
+    // margin-top: 30px;
   }
 
   .settings-row {
@@ -224,7 +236,8 @@
   }
 
   .submit-area {
-    // margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
   }
 }
 

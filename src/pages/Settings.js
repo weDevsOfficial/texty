@@ -91,67 +91,74 @@ function Settings() {
       <h1>{__('Settings', 'texty')}</h1>
 
       <form onSubmit={handleSubmit} className="textly-settings__form">
-        <fieldset disabled={isSaving}>
-          <div className="settings-row">
-            <TextControl
-              label={__('From Number', 'texty')}
-              value={settings.from}
-              type="tel"
-              onChange={(value) => setOption('from', value)}
-              help={__(
-                'The phone number all messages will go from. Make sure your gateway accepts the format.',
-                'texty'
-              )}
-              required
-            />
-          </div>
-
-          <div className="settings-row">
-            <div className="settings-row__label">
-              <label>{__('Gateways', 'texty')}</label>
-            </div>
-            <div className="settings-row__field">
-              <div className="settings-row__gateways">
-                {Object.keys(texty.gateways).map((key) => {
-                  const { name, logo } = texty.gateways[key];
-
-                  return (
-                    <div
-                      className={classNames('gateway-card', {
-                        active: key === settings.gateway,
-                      })}
-                      key={key}
-                      onClick={() => setOption('gateway', key)}
-                    >
-                      <ActiveIcon />
-                      <div className="gateway-card__logo">
-                        <img src={logo} alt={name} />
-                      </div>
-
-                      <div className="gateway-card__heading">{name}</div>
-                    </div>
-                  );
-                })}
+        <div className="texty-card">
+          <div className="texty-card__body">
+            <fieldset disabled={isSaving}>
+              <div className="settings-row">
+                <TextControl
+                  label={__('From Number', 'texty')}
+                  value={settings.from}
+                  type="tel"
+                  onChange={(value) => setOption('from', value)}
+                  help={__(
+                    'The phone number all messages will go from. Make sure your gateway accepts the format.',
+                    'texty'
+                  )}
+                  required
+                />
               </div>
-            </div>
+
+              <div className="settings-row">
+                <div className="settings-row__label">
+                  <label>{__('Gateways', 'texty')}</label>
+                </div>
+                <div className="settings-row__field">
+                  <div className="settings-row__gateways">
+                    {Object.keys(texty.gateways).map((key) => {
+                      const { name, logo } = texty.gateways[key];
+
+                      return (
+                        <div
+                          className={classNames('gateway-card', {
+                            active: key === settings.gateway,
+                          })}
+                          key={key}
+                          onClick={() => setOption('gateway', key)}
+                        >
+                          <ActiveIcon />
+                          <div className="gateway-card__logo">
+                            <img src={logo} alt={name} />
+                          </div>
+
+                          <div className="gateway-card__heading">{name}</div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              {settings.gateway === 'twilio' && (
+                <Twilio settings={settings.twilio} setOption={setCredential} />
+              )}
+
+              {settings.gateway === 'vonage' && (
+                <Vonage settings={settings.vonage} setOption={setCredential} />
+              )}
+            </fieldset>
           </div>
+        </div>
 
-          {settings.gateway === 'twilio' && (
-            <Twilio settings={settings.twilio} setOption={setCredential} />
-          )}
-
-          {settings.gateway === 'vonage' && (
-            <Vonage settings={settings.vonage} setOption={setCredential} />
-          )}
-
-          <div className="submit-area">
-            <Button type="submit" isPrimary={true} isBusy={isSaving}>
-              {isSaving
-                ? __('Saving...', 'texty')
-                : __('Save Changes', 'texty')}
-            </Button>
-          </div>
-        </fieldset>
+        <div className="submit-area">
+          <Button
+            type="submit"
+            isPrimary={true}
+            isBusy={isSaving}
+            className="large"
+          >
+            {isSaving ? __('Saving...', 'texty') : __('Save Changes', 'texty')}
+          </Button>
+        </div>
       </form>
     </div>
   );

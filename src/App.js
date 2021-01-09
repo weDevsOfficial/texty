@@ -3,7 +3,6 @@ import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -27,12 +26,14 @@ function App() {
 
       <Header />
 
-      <div className="wrap textly">
-        <Switch>
-          <Route path="/settings" component={Settings} />
-          <Route path="/tools" component={Tools} />
-          <Route path="/" exact component={Settings} />
-        </Switch>
+      <div className="wrap texty">
+        <div className="texty-container">
+          <Switch>
+            <Route path="/settings" component={Settings} />
+            <Route path="/tools" component={Tools} />
+            <Route path="/" exact component={Settings} />
+          </Switch>
+        </div>
       </div>
     </Router>
   );
