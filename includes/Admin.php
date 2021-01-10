@@ -89,14 +89,6 @@ class Admin {
      */
     public function localize_script() {
         $i18n = [
-            'gateways' => array_map( function ( $item ) { // phpcs:ignore PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket
-                $obj = new $item();
-
-                return [
-                    'name' => $obj->name(),
-                    'logo' => $obj->logo(),
-                ];
-            }, texty()->gateway()->all() ), // phpcs:ignore PEAR.Functions.FunctionCallSignature.CloseBracketLine
         ];
 
         return apply_filters( 'textly_localize_script', $i18n );

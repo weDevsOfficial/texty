@@ -8,13 +8,6 @@ use WP_REST_Server;
 class Settings extends Base {
 
     /**
-     * Settings option name
-     *
-     * @var string
-     */
-    private $option_name = 'texty_options';
-
-    /**
      * Initialize
      *
      * @return void
@@ -59,9 +52,31 @@ class Settings extends Base {
      * @return WP_Rest_Response|WP_Error
      */
     public function get_items( $request ) {
-        $settings = texty()->settings()->all();
+        if ( isset( $request['context'] ) && $request['context'] == 'edit' ) {
+            $settings = texty()->settings()->all();
+            $gateways = texty()->gateway()->all();
 
-        return rest_ensure_response( $settings );
+            $response = [
+                'gateway'  => $settings['gateway'],
+                'gateways' => array_map( function ( $gateway ) {
+                    $obj = new $gateway();
+
+                    return [
+                        'name'        => $obj->name(),
+                        'logo'        => $obj->logo(),
+                        'description' => $obj->description(),
+                    ];
+                }, $gateways ),
+            ];
+
+            foreach ( $gateways as $key => $gateway ) {
+                $response[ $key ] = (new $gateway())->get_settings();
+            }
+        } else {
+            $response = texty()->settings()->all();
+        }
+
+        return rest_ensure_response( $response );
     }
 
     /**
@@ -72,12 +87,11 @@ class Settings extends Base {
      * @return WP_Error|WP_REST_Response
      */
     public function update_items( $request ) {
-        $from       = $request->get_param( 'from' );
+        $settings   = texty()->settings()->all();
         $gateway    = $request->get_param( 'gateway' );
         $registered = texty()->gateway()->all();
 
         $value = [
-            'from'    => $from,
             'gateway' => $gateway,
         ];
 
@@ -92,7 +106,11 @@ class Settings extends Base {
         // set the credentials with the gateway key
         $value[$gateway] = $response;
 
-        update_option( TextySettings::option_key, $value, false );
+        $settings = array_merge( $settings, $value );
+
+        update_option( TextySettings::option_key, $settings, false );
+
+        $request->set_param( 'context', 'edit' );
 
         return $this->get_items( $request );
     }

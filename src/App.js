@@ -5,7 +5,7 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Header from './components/Header';
-import Home from './pages/Home';
+import Notifications from './pages/Notifications';
 import Settings from './pages/Settings';
 import Tools from './pages/Tools';
 
@@ -29,7 +29,7 @@ function App() {
       <div className="wrap texty">
         <div className="texty-container">
           <Switch>
-            <Route path="/settings" component={Settings} />
+            <Route path="/notifications" component={Notifications} />
             <Route path="/tools" component={Tools} />
             <Route path="/" exact component={Settings} />
           </Switch>

@@ -19,15 +19,16 @@ class Settings {
      */
     public function all() {
         $default = apply_filters( 'texty_settings_default', [
-            'from'    => '',
             'gateway' => '',
             'twilio'  => [
                 'sid'   => '',
                 'token' => '',
+                'from'  => '',
             ],
             'vonage' => [
                 'key'    => '',
                 'secret' => '',
+                'from'   => '',
             ],
         ] );
 
@@ -60,14 +61,5 @@ class Settings {
      */
     public function gateway() {
         return $this->get( 'gateway' );
-    }
-
-    /**
-     * Get the from number
-     *
-     * @return string|false
-     */
-    public function from() {
-        return $this->get( 'from' );
     }
 }

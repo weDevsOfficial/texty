@@ -35,12 +35,48 @@ class Vonage implements GatewayInterface {
     }
 
     /**
-     * Get the credentials
+     * Get the name
+     *
+     * @return string
+     */
+    public function description() {
+        return sprintf(
+            __(
+                'Send SMS with Vonage (formerly Nexmo). Follow <a href="%s" target="_blank">this link</a> to get the API Key and Secret from Vonage.',
+                'texty'
+            ),
+            'https://dashboard.nexmo.com/settings'
+        );
+    }
+
+    /**
+     * Get the settings
      *
      * @return array
      */
-    public function get_credential() {
-        return [];
+    public function get_settings() {
+        $creds = texty()->settings()->get( 'vonage' );
+
+        return [
+            'key' => [
+                'name'  => __( 'API Key', 'texty' ),
+                'type'  => 'text',
+                'value' => isset( $creds['key'] ) ? $creds['key'] : '',
+                'help'  => '',
+            ],
+            'secret' => [
+                'name'  => __( 'API Secret', 'texty' ),
+                'type'  => 'password',
+                'value' => isset( $creds['secret'] ) ? $creds['secret'] : '',
+                'help'  => '',
+            ],
+            'from' => [
+                'name'  => __( 'From Number', 'texty' ),
+                'type'  => 'text',
+                'value' => isset( $creds['from'] ) ? $creds['from'] : '',
+                'help'  => '',
+            ],
+        ];
     }
 
     /**
@@ -56,7 +92,7 @@ class Vonage implements GatewayInterface {
 
         $args = [
             'body' => [
-                'from'       => texty()->settings()->from(),
+                'from'       => $creds['from'],
                 'text'       => $message,
                 'to'         => $to,
                 'api_key'    => $creds['key'],
@@ -112,6 +148,7 @@ class Vonage implements GatewayInterface {
         return [
             'key'    => $creds['key'],
             'secret' => $creds['secret'],
+            'from'   => $creds['from'],
         ];
     }
 }

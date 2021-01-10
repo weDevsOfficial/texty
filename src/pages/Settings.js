@@ -12,8 +12,6 @@ import { toast } from 'react-toastify';
  * Internal dependencies
  */
 import ActiveIcon from '../components/ActiveIcon';
-import Twilio from '../components/Twilio';
-import Vonage from '../components/Vonage';
 
 function Settings() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,12 +33,11 @@ function Settings() {
     setIsLoading(true);
 
     apiFetch({
-      path: '/texty/v1/settings',
+      path: '/texty/v1/settings?context=edit',
     }).then((resp) => {
       setSettings(resp);
       setIsLoading(false);
     });
-    return () => {};
   }, []);
 
   const setOption = (option, value) => {
@@ -55,7 +52,10 @@ function Settings() {
       ...settings,
       [provider]: {
         ...settings[provider],
-        [name]: value,
+        [name]: {
+          ...settings[provider][name],
+          ['value']: value,
+        },
       },
     });
   };
@@ -63,12 +63,26 @@ function Settings() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    let data = {
+      gateway: settings.gateway,
+    };
+
+    Object.keys(settings.gateways).forEach((gateway) => {
+      Object.keys(settings[gateway]).forEach((field) => {
+        if (!data.hasOwnProperty(gateway)) {
+          data[gateway] = {};
+        }
+
+        data[gateway][field] = settings[gateway][field]['value'];
+      });
+    });
+
     setIsSaving(true);
 
     apiFetch({
       path: '/texty/v1/settings',
       method: 'POST',
-      data: settings,
+      data: data,
     })
       .then((resp) => {
         setIsSaving(false);
@@ -86,43 +100,32 @@ function Settings() {
     return <Spinner />;
   }
 
+  const gateways = Object.keys(settings.gateways);
+
   return (
     <div className="textly-settings">
       <h1>{__('Settings', 'texty')}</h1>
 
       <form onSubmit={handleSubmit} className="textly-settings__form">
         <div className="texty-card">
+          <div className="texty-card__header">{__('SMS Gateway', 'texty')}</div>
           <div className="texty-card__body">
             <fieldset disabled={isSaving}>
-              <div className="settings-row">
-                <TextControl
-                  label={__('From Number', 'texty')}
-                  value={settings.from}
-                  type="tel"
-                  onChange={(value) => setOption('from', value)}
-                  help={__(
-                    'The phone number all messages will go from. Make sure your gateway accepts the format.',
-                    'texty'
-                  )}
-                  required
-                />
-              </div>
-
               <div className="settings-row">
                 <div className="settings-row__label">
                   <label>{__('Gateways', 'texty')}</label>
                 </div>
                 <div className="settings-row__field">
                   <div className="settings-row__gateways">
-                    {Object.keys(texty.gateways).map((key) => {
-                      const { name, logo } = texty.gateways[key];
+                    {gateways.map((key) => {
+                      const { name, logo } = settings.gateways[key];
 
                       return (
                         <div
                           className={classNames('gateway-card', {
                             active: key === settings.gateway,
                           })}
-                          key={key}
+                          key={'gateway-' + key}
                           onClick={() => setOption('gateway', key)}
                         >
                           <ActiveIcon />
@@ -138,13 +141,56 @@ function Settings() {
                 </div>
               </div>
 
-              {settings.gateway === 'twilio' && (
+              {gateways.map((key) => {
+                const { name, description } = settings.gateways[key];
+
+                return (
+                  settings.gateway === key && (
+                    <div
+                      className={'settings-row settings-' + key}
+                      key={'settings-' + key}
+                    >
+                      <h3>{name}</h3>
+
+                      <p>
+                        {
+                          <span
+                            className="help"
+                            dangerouslySetInnerHTML={{
+                              __html: description,
+                            }}
+                          ></span>
+                        }
+                      </p>
+
+                      {Object.keys(settings[key]).map((item) => {
+                        const { name, type, value, help } = settings[key][item];
+
+                        return (
+                          <TextControl
+                            key={'field' + item}
+                            label={name}
+                            value={value}
+                            type={type}
+                            help={help}
+                            onChange={(value) =>
+                              setCredential(key, item, value)
+                            }
+                          />
+                        );
+                      })}
+                    </div>
+                  )
+                );
+              })}
+
+              {/* {settings.gateway === 'twilio' && (
                 <Twilio settings={settings.twilio} setOption={setCredential} />
               )}
 
               {settings.gateway === 'vonage' && (
                 <Vonage settings={settings.vonage} setOption={setCredential} />
-              )}
+              )} */}
             </fieldset>
           </div>
         </div>

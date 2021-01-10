@@ -29,11 +29,18 @@ interface GatewayInterface {
     public function name();
 
     /**
+     * Get the gateway description
+     *
+     * @return string
+     */
+    public function description();
+
+    /**
      * Get gateway credential
      *
      * @return array
      */
-    public function get_credential();
+    public function get_settings();
 
     /**
      * Validate a REST API request

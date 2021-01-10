@@ -26,6 +26,21 @@ class Twilio implements GatewayInterface {
     }
 
     /**
+     * Get the name
+     *
+     * @return string
+     */
+    public function description() {
+        return sprintf(
+            __(
+                'Send SMS with Twilio. Follow <a href="%s" target="_blank">this link</a> to get the Account SID and Token from Twilio.',
+                'texty'
+            ),
+            'https://www.twilio.com/console/project/settings'
+        );
+    }
+
+    /**
      * Get the logo
      *
      * @return string
@@ -35,12 +50,33 @@ class Twilio implements GatewayInterface {
     }
 
     /**
-     * Get the credentials
+     * Get the settings
      *
      * @return array
      */
-    public function get_credential() {
-        return [];
+    public function get_settings() {
+        $creds = texty()->settings()->get( 'twilio' );
+
+        return [
+            'sid' => [
+                'name'  => __( 'Account SID', 'texty' ),
+                'type'  => 'text',
+                'value' => isset( $creds['sid'] ) ? $creds['sid'] : '',
+                'help'  => '',
+            ],
+            'token' => [
+                'name'  => __( 'Auth Token', 'texty' ),
+                'type'  => 'password',
+                'value' => isset( $creds['token'] ) ? $creds['token'] : '',
+                'help'  => '',
+            ],
+            'from' => [
+                'name'  => __( 'From Number', 'texty' ),
+                'type'  => 'text',
+                'value' => isset( $creds['from'] ) ? $creds['from'] : '',
+                'help'  => '',
+            ],
+        ];
     }
 
     /**
@@ -59,7 +95,7 @@ class Twilio implements GatewayInterface {
                 'Authorization' => 'Basic ' . base64_encode( $creds['sid'] . ':' . $creds['token'] ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
             ],
             'body' => [
-                'From' => texty()->settings()->from(),
+                'From' => $creds['from'],
                 'To'   => $to,
                 'Body' => $message,
             ],
@@ -108,6 +144,7 @@ class Twilio implements GatewayInterface {
         return [
             'sid'   => $creds['sid'],
             'token' => $creds['token'],
+            'from'  => $creds['from'],
         ];
     }
 }
