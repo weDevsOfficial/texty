@@ -16,7 +16,7 @@ import Twilio from '../components/Twilio';
 import Vonage from '../components/Vonage';
 
 function Settings() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [settings, setSettings] = useState({
     gateway: 'twilio',

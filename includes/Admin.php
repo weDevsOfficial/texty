@@ -50,29 +50,36 @@ class Admin {
      * @return void
      */
     public function enqueue_scripts() {
-        $assets = require TEXTY_DIR . '/dist/admin.asset.php';
+        $assets = [
+            'version'      => time(),
+            'dependencies' => [
+                // 'wp-polyfill',
+                'wp-api-fetch',
+            ],
+        ];
 
-        $url = TEXTY_URL;
+        $url = TEXTY_URL . '/dist';
 
         // for local development
         // when webpack "hot module replacement" is enabled, this
         // constant needs to be turned "true" on "wp-config.php"
         if ( defined( 'WP_LOCAL_DEV' ) && WP_LOCAL_DEV ) {
-            $url = str_replace( '.test', '.test:8080', $url );
+            $url = 'http://localhost:8080';
         }
 
         // register scripts
-        wp_register_script( 'texty-vendors', $url . '/dist/vendors.js', $assets['dependencies'], $assets['version'], true );
-        wp_register_script( 'texty-admin', $url . '/dist/admin.js', [ 'texty-vendors' ], $assets['version'], true );
+        wp_register_script( 'texty-runtime', $url . '/runtime.js', $assets['dependencies'], $assets['version'], true );
+        wp_register_script( 'texty-vendors', $url . '/vendors.js', ['texty-runtime'], $assets['version'], true );
+        wp_register_script( 'texty-admin', $url . '/app.js', [ 'texty-vendors' ], $assets['version'], true );
         wp_localize_script( 'texty-admin', 'texty', $this->localize_script() );
 
         // register styles
-        wp_register_style( 'texty-vendors-css', $url . '/dist/vendors.css', [ 'wp-components' ], $assets['version'] );
-        wp_register_style( 'texty-admin-css', $url . '/dist/style-admin.css', [ 'texty-vendors-css' ], $assets['version'] );
+        wp_register_style( 'texty-vendors-css', $url . '/vendors.css', ['wp-components'], $assets['version'] );
+        wp_register_style( 'texty-css', $url . '/app.css', [ 'texty-vendors-css' ], $assets['version'] );
 
         // enqueue scripts and styles
         wp_enqueue_script( 'texty-admin' );
-        wp_enqueue_style( 'texty-admin-css' );
+        wp_enqueue_style( 'texty-css' );
     }
 
     /**

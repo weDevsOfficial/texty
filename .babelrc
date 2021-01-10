@@ -6,8 +6,7 @@
         "modules": false
       }
     ],
-    "@babel/preset-react",
-    "@wordpress/default"
+    "@babel/preset-react"
   ],
   "plugins": ["react-hot-loader/babel"]
 }

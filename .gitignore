@@ -6,9 +6,4 @@ dev-config.json
 build
 
 # dist folder
-dist/*
-!dist/admin.asset.php
-!dist/admin.js
-!dist/style-admin.css
-!dist/vendors.css
-!dist/vendors.js
+dist
