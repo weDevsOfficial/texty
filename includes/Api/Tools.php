@@ -53,7 +53,7 @@ class Tools extends Base {
         $to      = $request->get_param( 'to' );
         $message = 'This is a test message from Texty.';
 
-        $status = texty()->gateway()->send( $to, $message );
+        $status = texty()->gateways()->send( $to, $message );
 
         $response = [
             'success' => is_wp_error( $status ) ? false : true,

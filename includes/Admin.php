@@ -55,6 +55,7 @@ class Admin {
             'dependencies' => [
                 // 'wp-polyfill',
                 'wp-api-fetch',
+                'wp-i18n',
             ],
         ];
 

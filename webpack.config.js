@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { DefinePlugin } = require('webpack');
 
 const config = {
   entry: {
@@ -11,6 +12,7 @@ const config = {
   },
   externals: {
     '@wordpress/api-fetch': ['wp', 'apiFetch'],
+    '@wordpress/i18n': ['wp', 'i18n'],
   },
   module: {
     rules: [
@@ -80,7 +82,14 @@ const config = {
       },
     },
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new DefinePlugin({
+      'process.env.FORCE_REDUCED_MOTION': JSON.stringify(
+        process.env.FORCE_REDUCED_MOTION
+      ),
+    }),
+  ],
 };
 
 module.exports = (env, argv) => {

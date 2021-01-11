@@ -1,12 +1,21 @@
 /**
  * External dependencies
  */
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
-import { Button, Spinner, TextControl } from '@wordpress/components';
+import {
+  Button,
+  Spinner,
+  BaseControl,
+  TextControl,
+  Card,
+  CardBody,
+  CardHeader,
+} from '@wordpress/components';
 import classNames from 'classnames';
 import { toast } from 'react-toastify';
+import PhoneInput from 'react-phone-input-2';
 
 /**
  * Internal dependencies
@@ -16,18 +25,7 @@ import ActiveIcon from '../components/ActiveIcon';
 function Settings() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
-  const [settings, setSettings] = useState({
-    gateway: 'twilio',
-    from: '',
-    twilio: {
-      sid: '',
-      token: '',
-    },
-    vonage: {
-      key: '',
-      secret: '',
-    },
-  });
+  const [settings, setSettings] = useState({});
 
   useEffect(() => {
     setIsLoading(true);
@@ -107,9 +105,9 @@ function Settings() {
       <h1>{__('Settings', 'texty')}</h1>
 
       <form onSubmit={handleSubmit} className="textly-settings__form">
-        <div className="texty-card">
-          <div className="texty-card__header">{__('SMS Gateway', 'texty')}</div>
-          <div className="texty-card__body">
+        <Card>
+          <CardHeader>{__('SMS Gateway', 'texty')}</CardHeader>
+          <CardBody className="has-panel">
             <fieldset disabled={isSaving}>
               <div className="settings-row">
                 <div className="settings-row__label">
@@ -167,16 +165,34 @@ function Settings() {
                         const { name, type, value, help } = settings[key][item];
 
                         return (
-                          <TextControl
-                            key={'field' + item}
-                            label={name}
-                            value={value}
-                            type={type}
-                            help={help}
-                            onChange={(value) =>
-                              setCredential(key, item, value)
+                          <Fragment key={'field' + item}>
+                            {
+                              // for "from" fields, use phone input field
                             }
-                          />
+                            {item === 'from' && (
+                              <BaseControl label={name} help={help}>
+                                <PhoneInput
+                                  country="us"
+                                  value={value}
+                                  onChange={(value) =>
+                                    setCredential(key, item, value)
+                                  }
+                                />
+                              </BaseControl>
+                            )}
+
+                            {item !== 'from' && (
+                              <TextControl
+                                label={name}
+                                value={value}
+                                type={type}
+                                help={help}
+                                onChange={(value) =>
+                                  setCredential(key, item, value)
+                                }
+                              />
+                            )}
+                          </Fragment>
                         );
                       })}
                     </div>
@@ -192,8 +208,8 @@ function Settings() {
                 <Vonage settings={settings.vonage} setOption={setCredential} />
               )} */}
             </fieldset>
-          </div>
-        </div>
+          </CardBody>
+        </Card>
 
         <div className="submit-area">
           <Button

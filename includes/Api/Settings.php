@@ -54,7 +54,7 @@ class Settings extends Base {
     public function get_items( $request ) {
         if ( isset( $request['context'] ) && $request['context'] == 'edit' ) {
             $settings = texty()->settings()->all();
-            $gateways = texty()->gateway()->all();
+            $gateways = texty()->gateways()->all();
 
             $response = [
                 'gateway'  => $settings['gateway'],
@@ -89,7 +89,7 @@ class Settings extends Base {
     public function update_items( $request ) {
         $settings   = texty()->settings()->all();
         $gateway    = $request->get_param( 'gateway' );
-        $registered = texty()->gateway()->all();
+        $registered = texty()->gateways()->all();
 
         $value = [
             'gateway' => $gateway,
@@ -130,7 +130,7 @@ class Settings extends Base {
             'gateway' => [
                 'description' => __( 'The selected gateway', 'texty' ),
                 'type'        => 'enum',
-                'enum'        => array_keys( texty()->gateway()->all() ),
+                'enum'        => array_keys( texty()->gateways()->all() ),
                 'required'    => true,
             ],
         ];

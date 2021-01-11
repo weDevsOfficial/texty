@@ -1,3 +1,5 @@
+$primary-color: #006eef;
+
 @import './styles/toastify.scss';
 
 .wrap {
@@ -118,15 +120,54 @@
   .components-base-control__label {
     display: block;
     font-weight: 500;
+    margin-bottom: 8px;
   }
 
-  .components-text-control__input {
+  .components-text-control__input,
+  .components-textarea-control__input,
+  .react-tel-input .form-control {
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 7px 12px;
+    padding: 12px;
     color: #333;
     display: block;
-    max-width: 400px;
+    font-size: 16px;
+
+    &:focus {
+      border-color: darken($primary-color, 5%);
+      box-shadow: 0 0 1px darken($primary-color, 5%);
+    }
+  }
+
+  .react-tel-input {
+    .form-control {
+      line-height: normal;
+      height: auto;
+      padding-left: 54px;
+      width: 100%;
+    }
+
+    .selected-flag {
+      width: 45px;
+
+      .arrow {
+        left: 58px;
+      }
+    }
+  }
+
+  .components-select-control {
+    .components-input-control__container {
+      border-radius: 4px;
+
+      select {
+        font-size: 14px;
+      }
+    }
+
+    .components-input-control__backdrop {
+      border-color: #ddd;
+    }
   }
 
   .components-base-control__help {
@@ -134,16 +175,87 @@
     font-size: 1em;
   }
 
+  .components-card {
+    margin: 30px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+    .components-card__header {
+      font-size: 18px;
+      padding: 20px 30px;
+      font-weight: 500;
+    }
+
+    .components-card__body {
+      padding: 30px;
+    }
+
+    .has-panel.components-card__body {
+      padding: 20px 30px;
+    }
+  }
+
+  .components-panel {
+    border: none;
+
+    .components-panel__body {
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+
+      &:first-child {
+        border-top: none;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.is-opened {
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .components-panel__body-title {
+        .components-button {
+          display: flex;
+        }
+
+        span.label {
+          margin-left: auto;
+          margin-right: 50px;
+          font-size: 11px;
+          padding: 3px 10px;
+          border-radius: 12px;
+          display: inline-block;
+          line-height: 1.5;
+          background-color: #ddd;
+
+          &.active {
+            background-color: #31c48d;
+            color: #fff;
+          }
+        }
+      }
+
+      &.is-opened {
+        margin-bottom: 20px;
+
+        .components-panel__body-title {
+          border-bottom: 1px solid #e0e0e0;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+
   .components-button {
     border-radius: 4px;
-    // font-weight: 600;
 
     &.is-primary {
-      background-color: #006eef;
+      background-color: $primary-color;
       padding: 0 18px;
 
       &:hover {
-        background-color: darken(#006eef, 10%);
+        background-color: darken($primary-color, 10%);
       }
     }
 
@@ -169,6 +281,25 @@
     .dashicons-dismiss {
       color: #cc1818;
     }
+  }
+
+  .components-form-toggle {
+    &.is-checked {
+      .components-form-toggle__track {
+        background-color: $primary-color;
+      }
+    }
+  }
+
+  .components-toggle-control {
+    .components-toggle-control__label {
+      font-size: 16px;
+    }
+  }
+
+  .submit-area {
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
@@ -221,9 +352,14 @@
 
     &.active {
       opacity: 1;
+      border: 2px solid darken($primary-color, 5%);
 
       svg.active-icon {
         display: block;
+      }
+
+      .gateway-card__heading {
+        font-weight: 500;
       }
     }
 
@@ -240,11 +376,6 @@
       font-size: 1.2em;
       margin-top: 8px;
     }
-  }
-
-  .submit-area {
-    display: flex;
-    justify-content: flex-end;
   }
 }
 

@@ -45,26 +45,6 @@
             null,
             ""
          ],
-         "Vonage (nexmo)": [
-            null,
-            ""
-         ],
-         "Tools": [
-            null,
-            ""
-         ],
-         "Settings": [
-            null,
-            ""
-         ],
-         "Connected": [
-            null,
-            ""
-         ],
-         "Not connected": [
-            null,
-            ""
-         ],
          "Send SMS with Twilio. Follow <a href=\"%s\" target=\"_blank\">this link</a> to get the Account SID and Token from Twilio.": [
             null,
             ""
@@ -77,7 +57,11 @@
             null,
             ""
          ],
-         "Vonage": [
+         "From Number": [
+            null,
+            ""
+         ],
+         "Vonage (nexmo)": [
             null,
             ""
          ],
@@ -93,15 +77,31 @@
             null,
             ""
          ],
+         "Settings": [
+            null,
+            ""
+         ],
+         "Notifications": [
+            null,
+            ""
+         ],
+         "Tools": [
+            null,
+            ""
+         ],
+         "Connected": [
+            null,
+            ""
+         ],
+         "Not connected": [
+            null,
+            ""
+         ],
          "Changes have been saved": [
             null,
             ""
          ],
-         "From Number": [
-            null,
-            ""
-         ],
-         "The phone number all messages will go from. Make sure your gateway accepts the format.": [
+         "SMS Gateway": [
             null,
             ""
          ],

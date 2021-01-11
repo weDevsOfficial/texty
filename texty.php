@@ -80,7 +80,7 @@ final class Texty {
      *
      * @return Texty\Gateways
      */
-    public function gateway() {
+    public function gateways() {
         if ( ! isset( $this->instances['gateway'] ) ) {
             $this->instances['gateway'] = new \Texty\Gateways();
         }
@@ -99,6 +99,19 @@ final class Texty {
         }
 
         return $this->instances['settings'];
+    }
+
+    /**
+     * Access to gateway manager
+     *
+     * @return Texty\Notifications
+     */
+    public function notifications() {
+        if ( ! isset( $this->instances['notification'] ) ) {
+            $this->instances['notification'] = new \Texty\Notifications();
+        }
+
+        return $this->instances['notification'];
     }
 }
 

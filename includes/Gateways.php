@@ -56,6 +56,10 @@ class Gateways {
             // 'clickatell' => __NAMESPACE__ . '\Gateways\Clickatell',
         ];
 
-        return apply_filters( 'textly_available_gateways', $gateways );
+        if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+            $gateways['fake'] = __NAMESPACE__ . '\Gateways\Fake';
+        }
+
+        return apply_filters( 'texty_available_gateways', $gateways );
     }
 }

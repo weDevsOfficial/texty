@@ -20,6 +20,7 @@ class Api {
     public function __construct() {
         $this->classes = [
             Api\Settings::class,
+            Api\Notifications::class,
             Api\Tools::class,
             Api\Status::class,
         ];

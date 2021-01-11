@@ -16,14 +16,14 @@
     "readme": "wp-readme-to-md"
   },
   "dependencies": {
-    "@wordpress/api-fetch": "^3.21.1",
     "@wordpress/components": "^12.0.1",
-    "@wordpress/i18n": "^3.17.0",
     "classnames": "^2.2.6",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.13.0",
+    "react-phone-input-2": "^2.13.9",
     "react-router-dom": "^5.2.0",
+    "react-select": "^3.1.1",
     "react-toastify": "^6.2.0"
   },
   "devDependencies": {

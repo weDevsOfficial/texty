@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-08T03:41:01+00:00\n"
+"POT-Creation-Date: 2021-01-10T09:32:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: texty\n"
@@ -35,11 +35,11 @@ msgstr ""
 msgid "https://tareq.co"
 msgstr ""
 
-#: includes/Api/Settings.php:108
+#: includes/Api/Settings.php:126
 msgid "The from phone number"
 msgstr ""
 
-#: includes/Api/Settings.php:113
+#: includes/Api/Settings.php:131
 msgid "The selected gateway"
 msgstr ""
 
@@ -52,24 +52,58 @@ msgid "Clickatell"
 msgstr ""
 
 #: includes/Gateways/Twilio.php:25
-#: src/components/Twilio.js:8
 msgid "Twilio"
+msgstr ""
+
+#: includes/Gateways/Twilio.php:35
+msgid "Send SMS with Twilio. Follow <a href=\"%s\" target=\"_blank\">this link</a> to get the Account SID and Token from Twilio."
+msgstr ""
+
+#: includes/Gateways/Twilio.php:62
+msgid "Account SID"
+msgstr ""
+
+#: includes/Gateways/Twilio.php:68
+msgid "Auth Token"
+msgstr ""
+
+#: includes/Gateways/Twilio.php:74
+#: includes/Gateways/Vonage.php:74
+msgid "From Number"
 msgstr ""
 
 #: includes/Gateways/Vonage.php:25
 msgid "Vonage (nexmo)"
 msgstr ""
 
-#: src/components/Header.js:15
-#: src/components/Header.js:17
-#: src/pages/Tools.js:52
-msgid "Tools"
+#: includes/Gateways/Vonage.php:44
+msgid "Send SMS with Vonage (formerly Nexmo). Follow <a href=\"%s\" target=\"_blank\">this link</a> to get the API Key and Secret from Vonage."
 msgstr ""
 
-#: src/components/Header.js:23
-#: src/components/Header.js:26
-#: src/pages/Settings.js:91
+#: includes/Gateways/Vonage.php:62
+msgid "API Key"
+msgstr ""
+
+#: includes/Gateways/Vonage.php:68
+msgid "API Secret"
+msgstr ""
+
+#: src/components/Header.js:28
+#: src/components/Header.js:31
+#: src/pages/Settings.js:107
 msgid "Settings"
+msgstr ""
+
+#: src/components/Header.js:37
+#: src/components/Header.js:40
+#: src/pages/Notifications.js:8
+msgid "Notifications"
+msgstr ""
+
+#: src/components/Header.js:46
+#: src/components/Header.js:49
+#: src/pages/Tools.js:52
+msgid "Tools"
 msgstr ""
 
 #: src/components/Status.js:33
@@ -80,55 +114,23 @@ msgstr ""
 msgid "Not connected"
 msgstr ""
 
-#: src/components/Twilio.js:16
-msgid "Send SMS with Twilio. Follow <a href=\"%s\" target=\"_blank\">this link</a> to get the Account SID and Token from Twilio."
-msgstr ""
-
-#: src/components/Twilio.js:28
-msgid "Account SID"
-msgstr ""
-
-#: src/components/Twilio.js:35
-msgid "Auth Token"
-msgstr ""
-
-#: src/components/Vonage.js:8
-msgid "Vonage"
-msgstr ""
-
-#: src/components/Vonage.js:16
-msgid "Send SMS with Vonage (formerly Nexmo). Follow <a href=\"%s\" target=\"_blank\">this link</a> to get the API Key and Secret from Vonage."
-msgstr ""
-
-#: src/components/Vonage.js:28
-msgid "API Key"
-msgstr ""
-
-#: src/components/Vonage.js:35
-msgid "API Secret"
-msgstr ""
-
-#: src/pages/Settings.js:76
+#: src/pages/Settings.js:90
 msgid "Changes have been saved"
 msgstr ""
 
-#: src/pages/Settings.js:97
-msgid "From Number"
-msgstr ""
-
-#: src/pages/Settings.js:101
-msgid "The phone number all messages will go from. Make sure your gateway accepts the format."
-msgstr ""
-
 #: src/pages/Settings.js:111
+msgid "SMS Gateway"
+msgstr ""
+
+#: src/pages/Settings.js:116
 msgid "Gateways"
 msgstr ""
 
-#: src/pages/Settings.js:150
+#: src/pages/Settings.js:205
 msgid "Saving..."
 msgstr ""
 
-#: src/pages/Settings.js:151
+#: src/pages/Settings.js:205
 msgid "Save Changes"
 msgstr ""
 
