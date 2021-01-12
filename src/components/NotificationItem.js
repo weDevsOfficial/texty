@@ -13,22 +13,13 @@ function NotificationItem({
   title,
   description,
   keyName,
+  roles,
   settings,
   setOption,
 }) {
   const replacements = settings.replacements
     .map((item) => `<code>{${item}}</code>`)
     .join(', ');
-
-  const roles = [
-    {
-      label: __('— Select User Role —', 'texty'),
-      value: '',
-    },
-    { label: 'Administrator', value: 'administrator' },
-    { label: 'Editor', value: 'editor' },
-    { label: 'Author', value: 'author' },
-  ];
 
   return (
     <PanelBody
@@ -65,6 +56,7 @@ function NotificationItem({
               }
             >
               <Select
+                required={true}
                 isMulti={settings.type === 'role'}
                 value={roles.filter((item) =>
                   settings.recipients.includes(item.value)
@@ -87,6 +79,7 @@ function NotificationItem({
 
           <TextareaControl
             label={__('Message', 'texty')}
+            required={true}
             help={
               <span
                 className="help"

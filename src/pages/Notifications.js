@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
-import classNames from 'classnames';
+import { toast } from 'react-toastify';
 import apiFetch from '@wordpress/api-fetch';
 import {
   Button,
@@ -41,6 +41,45 @@ function Notifications() {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let data = {};
+
+    Object.keys(settings.notifications).forEach((item) => {
+      if (!data.hasOwnProperty(item)) {
+        data[item] = {};
+      }
+
+      let notif = settings.notifications[item];
+
+      data[item] = {
+        enabled: notif['enabled'],
+        message: notif['message'],
+        recipients: notif['recipients'],
+        route: notif['route'],
+      };
+    });
+
+    setIsSaving(true);
+
+    apiFetch({
+      path: '/texty/v1/notifications',
+      method: 'POST',
+      data: data,
+    })
+      .then((resp) => {
+        setIsSaving(false);
+
+        toast.success(__('Changes have been saved', 'texty'));
+      })
+      .catch((err) => {
+        setIsSaving(false);
+        console.log(err);
+        toast.error(err.message);
+      });
+  };
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -55,7 +94,7 @@ function Notifications() {
         )}
       </p>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         {Object.keys(settings.groups).map((group) => (
           <Card key={group}>
             <CardHeader>{settings.groups[group].title}</CardHeader>
@@ -69,6 +108,7 @@ function Notifications() {
                       <NotificationItem
                         key={notify}
                         title={notification.title}
+                        roles={settings.roles}
                         keyName={notification.id}
                         settings={notification}
                         setOption={setOption}

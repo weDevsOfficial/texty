@@ -36,7 +36,28 @@ class Registration extends Notification {
      * @return string
      */
     public function get_message() {
-        return __return_empty_string();
+        $message = parent::get_message_raw();
+
+        if ( ! $this->user_id ) {
+            return $message;
+        }
+
+        $user = get_user_by( 'id', $this->user_id );
+
+        foreach ( $this->replacement_keys() as $search => $value ) {
+            $message = str_replace( '{' . $search . '}', $user->$value, $message );
+        }
+
+        return $message;
+    }
+
+    /**
+     * Return recipients
+     *
+     * @return array
+     */
+    public function get_recipients() {
+        return $this->get_numbers_by_roles();
     }
 
     /**
@@ -53,14 +74,5 @@ class Registration extends Notification {
             'first_name'   => 'first_name',
             'last_name'    => 'last_name',
         ];
-    }
-
-    /**
-     * Return recipients
-     *
-     * @return array
-     */
-    public function get_recipients() {
-        return __return_empty_array();
     }
 }

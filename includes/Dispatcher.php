@@ -3,7 +3,7 @@
 namespace Texty;
 
 /**
- * Notification Class
+ * Dispatcher Class
  */
 class Dispatcher {
 

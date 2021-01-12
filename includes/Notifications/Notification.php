@@ -73,8 +73,23 @@ abstract class Notification {
      *
      * @return string
      */
+    public function get_message_raw() {
+        $settings = $this->settings();
+
+        if ( isset( $settings['message'] ) ) {
+            return $settings['message'];
+        }
+
+        return '';
+    }
+
+    /**
+     * Return the message
+     *
+     * @return string
+     */
     public function get_message() {
-        return __return_empty_string();
+        return $this->get_message_raw();
     }
 
     /**
@@ -91,8 +106,65 @@ abstract class Notification {
      *
      * @return array
      */
+    public function get_recipients_raw() {
+        $settings = $this->settings();
+
+        if ( isset( $settings['recipients'] ) ) {
+            return $settings['recipients'];
+        }
+
+        return [];
+    }
+
+    /**
+     * Return recipients
+     *
+     * @return array
+     */
     public function get_recipients() {
-        return __return_empty_array();
+        return $this->get_recipients_raw();
+    }
+
+    /**
+     * Get phone numbers by roles
+     *
+     * @return array
+     */
+    protected function get_numbers_by_roles() {
+        global $wpdb;
+
+        $numbers = [];
+        $roles   = $this->get_recipients_raw();
+
+        if ( ! ( is_array( $roles ) && $roles ) ) {
+            return false;
+        }
+
+        foreach ( $roles as $role ) {
+            $users = get_users( [
+                'role'       => $role,
+                'fields'     => 'ID',
+                'meta_query' => [
+                    [
+                        'key' => 'texty_phone',
+                    ],
+                ],
+            ] );
+
+            if ( ! $users ) {
+                continue;
+            }
+
+            $results = $wpdb->get_col(
+                sprintf( "SELECT `meta_value` from $wpdb->usermeta WHERE `user_id` IN (%s) AND `meta_key` = 'texty_phone'", implode( ', ', $users ) )
+            );
+
+            foreach ( $results as $number ) {
+                $numbers[] = $number;
+            }
+        }
+
+        return $numbers;
     }
 
     /**
@@ -101,7 +173,28 @@ abstract class Notification {
      * @return bool
      */
     public function enabled() {
+        $settings = $this->settings();
+
+        if ( isset( $settings['enabled'] ) && $settings['enabled'] === true ) {
+            return true;
+        }
+
         return false;
+    }
+
+    /**
+     * Get the notification settings
+     *
+     * @return array
+     */
+    public function settings() {
+        $settings = texty()->notifications()->settings();
+
+        if ( isset( $settings[ $this->get_id() ] ) ) {
+            return $settings[ $this->get_id() ];
+        }
+
+        return [];
     }
 
     /**

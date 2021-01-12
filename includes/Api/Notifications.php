@@ -2,6 +2,7 @@
 
 namespace Texty\Api;
 
+use Texty\Notifications as TextyNotifications;
 use WP_REST_Server;
 
 class Notifications extends Base {
@@ -56,6 +57,7 @@ class Notifications extends Base {
 
             $response = [
                 'groups'        => texty()->notifications()->get_groups(),
+                'roles'         => $this->get_roles(),
                 'notifications' => array_map( function ( $notifier ) {
                     $obj = new $notifier();
 
@@ -64,9 +66,10 @@ class Notifications extends Base {
                         'enabled'      => $obj->enabled(),
                         'title'        => $obj->get_title(),
                         'type'         => $obj->get_type(),
-                        'message'      => $obj->get_message(),
+                        'message'      => $obj->get_message_raw(),
+                        'route'        => 'sms',
                         'group'        => $obj->get_group(),
-                        'recipients'   => $obj->get_recipients(),
+                        'recipients'   => $obj->get_recipients_raw(),
                         'replacements' => array_keys( $obj->replacement_keys() ),
                     ];
                 }, $notifications ),
@@ -86,5 +89,39 @@ class Notifications extends Base {
      * @return WP_Error|WP_REST_Response
      */
     public function update_items( $request ) {
+        $settings      = [];
+        $notifications = texty()->notifications()->all();
+
+        foreach ( $notifications as $class ) {
+            $obj = new $class();
+
+            if ( $request->has_param( $obj->get_id() ) ) {
+                $settings[ $obj->get_id() ] = $request->get_param( $obj->get_id() );
+            }
+        }
+
+        update_option( TextyNotifications::option_key, $settings, false );
+
+        $request->set_param( 'context', 'edit' );
+
+        return $this->get_items( $request );
+    }
+
+    /**
+     * Get user roles
+     *
+     * @return array
+     */
+    public function get_roles() {
+        $roles = [];
+
+        foreach ( wp_roles()->get_names() as $value => $label ) {
+            $roles[] = [
+                'label' => $label,
+                'value' => $value,
+            ];
+        }
+
+        return $roles;
     }
 }

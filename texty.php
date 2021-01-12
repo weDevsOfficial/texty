@@ -62,6 +62,7 @@ final class Texty {
         }
 
         new Texty\Api();
+        new Texty\Dispatcher();
     }
 
     /**
