@@ -12,6 +12,7 @@ class Dispatcher {
      */
     public function __construct() {
         add_action( 'user_register', [ $this, 'user_register' ] );
+        add_action( 'comment_post', [ $this, 'new_comment' ] );
     }
 
     /**
@@ -26,6 +27,21 @@ class Dispatcher {
         $notifier = new $class();
         $notifier->set_user( $user_id );
 
+        $notifier->send();
+    }
+
+    /**
+     * Send message upon a new comment
+     *
+     * @param int $comment_id
+     *
+     * @return void
+     */
+    public function new_comment( $comment_id ) {
+        $class    = texty()->notifications()->get( 'comment' );
+        $notifier = new $class();
+
+        $notifier->set_comment( $comment_id );
         $notifier->send();
     }
 }

@@ -48,6 +48,7 @@ class Notifications {
 
         $notifications = [
             'registration' => __NAMESPACE__ . '\Notifications\Registration',
+            'comment'      => __NAMESPACE__ . '\Notifications\Comment',
         ];
 
         $this->notifications = apply_filters( 'texty_available_notifications', $notifications );

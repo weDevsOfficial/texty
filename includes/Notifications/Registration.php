@@ -13,7 +13,7 @@ class Registration extends Notification {
      * Initialize
      */
     public function __construct() {
-        $this->title = __( 'New User Registration' );
+        $this->title = __( 'New User Registration', 'texty' );
         $this->id    = 'registration';
     }
 
