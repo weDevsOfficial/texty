@@ -13,8 +13,15 @@ class Registration extends Notification {
      * Initialize
      */
     public function __construct() {
-        $this->title = __( 'New User Registration', 'texty' );
-        $this->id    = 'registration';
+        $this->title   = __( 'New User Registration', 'texty' );
+        $this->id      = 'registration';
+        $this->default = <<<'EOD'
+A new user registered on your site with the username "{username}".
+
+Name: {display_name}
+Email: {email}
+Role: {role}
+EOD;
     }
 
     /**
@@ -45,7 +52,22 @@ class Registration extends Notification {
         $user = get_user_by( 'id', $this->user_id );
 
         foreach ( $this->replacement_keys() as $search => $value ) {
-            $message = str_replace( '{' . $search . '}', $user->$value, $message );
+            $value = isset( $user->$value ) ? $user->$value : '';
+
+            if ( 'role' === $search ) {
+                $roles    = [];
+                $wp_roles = wp_roles();
+
+                foreach ( $user->roles as $role ) {
+                    if ( isset( $wp_roles->role_names[ $role ] ) ) {
+                        $roles[] = $wp_roles->role_names[ $role ];
+                    }
+                }
+
+                $value = implode( ', ', $roles );
+            }
+
+            $message = str_replace( '{' . $search . '}', $value, $message );
         }
 
         return $message;
@@ -73,6 +95,7 @@ class Registration extends Notification {
             'display_name' => 'display_name',
             'first_name'   => 'first_name',
             'last_name'    => 'last_name',
+            'role'         => 'role',
         ];
     }
 }

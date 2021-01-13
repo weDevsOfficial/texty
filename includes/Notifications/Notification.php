@@ -26,6 +26,13 @@ abstract class Notification {
     protected $type = 'role';
 
     /**
+     * The default message
+     *
+     * @var string
+     */
+    protected $default;
+
+    /**
      * Notification group
      *
      * @var string
@@ -69,6 +76,15 @@ abstract class Notification {
     }
 
     /**
+     * Return the default message
+     *
+     * @return string
+     */
+    public function get_default_message() {
+        return $this->default;
+    }
+
+    /**
      * Return the message
      *
      * @return string
@@ -80,7 +96,7 @@ abstract class Notification {
             return $settings['message'];
         }
 
-        return '';
+        return $this->get_default_message();
     }
 
     /**
