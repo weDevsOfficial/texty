@@ -12,23 +12,13 @@ $primary-color: #006eef;
   max-width: 70rem;
 }
 
-.texty-card {
-  color: #141b38;
-  background-color: #fff;
-  border: 1px solid #e8e8eb;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  margin: 30px 0;
+.texty-two-col {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
-  .texty-card__header {
-    font-size: 18px;
-    font-weight: 600;
-    padding: 20px 30px;
-    border-bottom: 1px solid #e8e8eb;
-  }
-
-  .texty-card__body {
-    padding: 30px;
-    position: relative;
+  .texty-col {
+    flex: 0 48%;
   }
 }
 
@@ -69,9 +59,9 @@ $primary-color: #006eef;
 
     a {
       text-decoration: none;
-      margin-right: 10px;
+      margin-left: 5px;
       color: #4c4c4c;
-      padding: 8px 10px;
+      padding: 8px 20px 8px 15px;
 
       &:hover {
         background-color: #f5f5f5;
@@ -80,6 +70,12 @@ $primary-color: #006eef;
 
       span.title {
         margin-left: 5px;
+      }
+
+      &.active {
+        background-color: $primary-color;
+        border-radius: 3px;
+        color: #f5f5f5;
       }
     }
 
@@ -137,6 +133,11 @@ $primary-color: #006eef;
       border-color: darken($primary-color, 5%);
       box-shadow: 0 0 1px darken($primary-color, 5%);
     }
+  }
+
+  .monospace .components-textarea-control__input {
+    font-family: Consolas, Monaco, monospace;
+    font-size: 14px;
   }
 
   .react-tel-input {

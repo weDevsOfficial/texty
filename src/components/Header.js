@@ -1,5 +1,6 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
+import { NavLink } from 'react-router-dom';
 
 function Header() {
   return (
@@ -22,32 +23,33 @@ function Header() {
           </div>
 
           <div className="texty-admin-header__menu">
-            <a
-              href="#/"
+            <NavLink
+              to="/"
+              exact
               className="header-link"
-              title={__('Settings', 'texty')}
+              title={__('Gateway Settings', 'texty')}
             >
               <span className="dashicons dashicons-admin-settings"></span>
-              <span className="title">{__('Settings', 'texty')}</span>
-            </a>
+              <span className="title">{__('Gateway Settings', 'texty')}</span>
+            </NavLink>
 
-            <a
-              href="#/notifications"
+            <NavLink
+              to="/notifications"
               className="header-link"
               title={__('Notifications', 'texty')}
             >
               <span className="dashicons dashicons-admin-plugins"></span>
               <span className="title">{__('Notifications', 'texty')}</span>
-            </a>
+            </NavLink>
 
-            <a
-              href="#/tools"
+            <NavLink
+              to="/tools"
               className="header-link"
               title={__('Tools', 'texty')}
             >
               <span className="dashicons dashicons-admin-tools"></span>
               <span className="title">{__('Tools', 'texty')}</span>
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>

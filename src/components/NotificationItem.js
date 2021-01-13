@@ -51,7 +51,10 @@ function NotificationItem({
               label={__('Recipients')}
               help={
                 settings.type === 'role'
-                  ? __('Select one or multiple user roles.')
+                  ? __(
+                      'Select one or multiple user roles. Users with phone number in their profile will receive the texts.',
+                      'texty'
+                    )
                   : ''
               }
             >
@@ -79,6 +82,7 @@ function NotificationItem({
 
           <TextareaControl
             label={__('Message', 'texty')}
+            className="monospace"
             required={true}
             help={
               <span

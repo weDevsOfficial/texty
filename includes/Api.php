@@ -23,6 +23,7 @@ class Api {
             Api\Notifications::class,
             Api\Tools::class,
             Api\Status::class,
+            Api\Send::class,
         ];
 
         add_action( 'rest_api_init', [ $this, 'init_api' ] );

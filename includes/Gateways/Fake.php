@@ -17,7 +17,7 @@ class Fake implements GatewayInterface {
      * @return string
      */
     public function name() {
-        return __( 'Fake', 'texty' );
+        return __( 'Fake Gateway', 'texty' );
     }
 
     /**
