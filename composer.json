@@ -11,7 +11,9 @@
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require": {},
+    "require": {
+        "appsero/client": "^1.2"
+    },
     "autoload": {
         "psr-4": {
             "Texty\\": "includes/"
