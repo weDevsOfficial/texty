@@ -20,6 +20,13 @@ require __DIR__ . '/vendor/autoload.php';
 final class Texty {
 
     /**
+     * Plugin version
+     *
+     * @var string
+     */
+    private $version = '0.1';
+
+    /**
      * Instances array
      *
      * @var array
@@ -32,6 +39,10 @@ final class Texty {
     public function __construct() {
         $this->define_constants();
 
+        // run the installer
+        register_activation_hook( __FILE__, [ $this, 'activate' ] );
+
+        // load the plugin
         add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
     }
 
@@ -71,9 +82,20 @@ final class Texty {
      * @return void
      */
     private function define_constants() {
+        define( 'TEXTY_VERSION', $this->version );
         define( 'TEXTY_DIR', __DIR__ );
         define( 'TEXTY_FILE', __FILE__ );
         define( 'TEXTY_URL', plugins_url( '', __FILE__ ) );
+    }
+
+    /**
+     * Run the installer
+     *
+     * @return void
+     */
+    public function activate() {
+        $installer = new Texty\Install();
+        $installer->run();
     }
 
     /**

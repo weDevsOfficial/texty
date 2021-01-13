@@ -1,5 +1,5 @@
 === Texty - SMS Notification for WordPress ===
-Contributors: tareq1988
+Contributors: tareq1988, wedevs, nizamuddinbabu
 Donate link: https://tareq.co/donate/
 Tags: sms, text, notification, twilio, nexmo, vonage
 Requires at least: 4.0
@@ -34,14 +34,12 @@ Another example might be an order notification from WooCommerce. Upon receiving 
 
 #### WordPress Core
 
-*(integration coming soon)*
-
 - **New User** - Send an alert when someone registers on your website.
 - **New Comment** - Get an alert when anyone lefts a comment.
 
 #### WooCommerce
 
-*(integration coming soon)*
+- **New Order (Admin)** - Get an alert when a new order is received.
 
 #### Disclaimer 
 
@@ -62,7 +60,7 @@ Currently, it supports Twilio and Nexmo. More gateway support is coming soon.
 
 = Does it support WooCommerce? =
 
-At this moment it doesn't. We are working to make it work with WooCommerce.
+Yes, it does. Currently admins can receive texts upon a new order. More events will be supported in near future.
 
 = Does it support Dokan? =
 
