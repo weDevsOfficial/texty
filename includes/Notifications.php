@@ -49,6 +49,7 @@ class Notifications {
         $notifications = [
             'registration' => __NAMESPACE__ . '\Notifications\Registration',
             'comment'      => __NAMESPACE__ . '\Notifications\Comment',
+            'order_admin'  => __NAMESPACE__ . '\Notifications\OrderAdmin',
         ];
 
         $this->notifications = apply_filters( 'texty_available_notifications', $notifications );
@@ -65,6 +66,10 @@ class Notifications {
         return apply_filters( 'texty_notification_groups', [
             'wp' => [
                 'title'       => __( 'WordPress', 'texty' ),
+                'description' => '',
+            ],
+            'wc' => [
+                'title'       => __( 'WooCommerce', 'texty' ),
                 'description' => '',
             ],
         ] );

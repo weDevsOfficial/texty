@@ -92,6 +92,6 @@ class Menu {
         $i18n = [
         ];
 
-        return apply_filters( 'textly_localize_script', $i18n );
+        return apply_filters( 'texty_localize_script', $i18n );
     }
 }

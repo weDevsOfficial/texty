@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 require __DIR__ . '/vendor/autoload.php';
 
 /**
- * Textly Class
+ * Texty Class
  */
 final class Texty {
 
@@ -36,9 +36,9 @@ final class Texty {
     }
 
     /**
-     * Initializes the Textly class
+     * Initializes the Texty class
      *
-     * Checks for an existing Textly instance
+     * Checks for an existing Texty instance
      * and if it doesn't find one, creates it.
      */
     public static function instance() {
