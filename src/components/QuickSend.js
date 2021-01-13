@@ -43,7 +43,7 @@ function QuickSend() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="textly-settings__form">
+    <form onSubmit={handleSubmit} className="texty-settings__form">
       <fieldset disabled={isSending}>
         <TextControl
           label={__('Phone Number', 'texty')}

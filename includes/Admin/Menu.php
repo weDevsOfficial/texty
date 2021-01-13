@@ -20,7 +20,7 @@ class Menu {
      * @return void
      */
     public function register_menu() {
-        $position = apply_filters( 'text_menu_position', 58 );
+        $position = apply_filters( 'texty_menu_position', 58 );
 
         $menu = add_menu_page(
             __( 'Texty', 'texty' ),

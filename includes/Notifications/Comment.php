@@ -13,9 +13,10 @@ class Comment extends Notification {
      * Initialize
      */
     public function __construct() {
-        $this->title   = __( 'New Comment', 'texty' );
-        $this->id      = 'comment';
-        $this->default = <<<'EOD'
+        $this->title              = __( 'New Comment', 'texty' );
+        $this->id                 = 'comment';
+        $this->default_recipients = ['administrator'];
+        $this->default            = <<<'EOD'
 A new comment added on the post "{post_title}" by {author} ({email}).
 
 View comment: {post_url}

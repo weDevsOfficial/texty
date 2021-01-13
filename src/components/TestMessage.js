@@ -41,7 +41,7 @@ function TestMessage() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="textly-settings__form">
+    <form onSubmit={handleSubmit} className="texty-settings__form">
       <fieldset disabled={isSending}>
         <TextControl
           label={__('Test Number', 'texty')}

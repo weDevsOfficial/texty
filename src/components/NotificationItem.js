@@ -52,7 +52,7 @@ function NotificationItem({
               help={
                 settings.type === 'role'
                   ? __(
-                      'Select one or multiple user roles. Users with phone number in their profile will receive the texts.',
+                      'Select one or multiple user roles. Users with phone number in their profile will receive the text',
                       'texty'
                     )
                   : ''
@@ -66,15 +66,11 @@ function NotificationItem({
                 )}
                 options={roles}
                 onChange={(options) => {
-                  if (options !== null) {
-                    setOption(
-                      keyName,
-                      'recipients',
-                      options.map((item) => item.value)
-                    );
-                  } else {
-                    setOption(keyName, 'recipients', []);
-                  }
+                  setOption(
+                    keyName,
+                    'recipients',
+                    options !== null ? options.map((item) => item.value) : []
+                  );
                 }}
               />
             </BaseControl>

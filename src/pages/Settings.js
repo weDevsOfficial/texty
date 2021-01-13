@@ -101,10 +101,10 @@ function Settings() {
   const gateways = Object.keys(settings.gateways);
 
   return (
-    <div className="textly-settings">
+    <div className="texty-settings">
       <h1>{__('Settings', 'texty')}</h1>
 
-      <form onSubmit={handleSubmit} className="textly-settings__form">
+      <form onSubmit={handleSubmit} className="texty-settings__form">
         <Card>
           <CardHeader>{__('SMS Gateway', 'texty')}</CardHeader>
           <CardBody className="has-panel">

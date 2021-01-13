@@ -26,7 +26,7 @@ class Fake implements GatewayInterface {
      * @return string
      */
     public function description() {
-        return __( 'This is a fake gateway that logs the messagees to <code>debug.log</code> file.', 'texty' );
+        return __( 'This is a fake gateway that logs the messages to <code>debug.log</code> file without sending the actual SMS.', 'texty' );
     }
 
     /**

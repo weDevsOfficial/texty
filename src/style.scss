@@ -304,8 +304,8 @@ $primary-color: #006eef;
   }
 }
 
-.textly-settings {
-  .textly-settings__form {
+.texty-settings {
+  .texty-settings__form {
     // margin-top: 30px;
   }
 
@@ -376,20 +376,6 @@ $primary-color: #006eef;
     .gateway-card__heading {
       font-size: 1.2em;
       margin-top: 8px;
-    }
-  }
-}
-
-.textly-tools {
-  .textly-settings__form {
-    display: flex;
-
-    fieldset {
-      margin-right: 15px;
-    }
-
-    button {
-      margin-top: 23px;
     }
   }
 }

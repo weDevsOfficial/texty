@@ -33,6 +33,13 @@ abstract class Notification {
     protected $default;
 
     /**
+     * Default recipients
+     *
+     * @var mixed
+     */
+    protected $default_recipients;
+
+    /**
      * Notification group
      *
      * @var string
@@ -129,7 +136,7 @@ abstract class Notification {
             return $settings['recipients'];
         }
 
-        return [];
+        return $this->default_recipients;
     }
 
     /**
