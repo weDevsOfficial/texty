@@ -107,7 +107,7 @@ function Settings() {
       <form onSubmit={handleSubmit} className="texty-settings__form">
         <Card>
           <CardHeader>{__('SMS Gateway', 'texty')}</CardHeader>
-          <CardBody className="has-panel">
+          <CardBody>
             <fieldset disabled={isSaving}>
               <div className="settings-row">
                 <div className="settings-row__label">

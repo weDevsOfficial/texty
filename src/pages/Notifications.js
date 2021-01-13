@@ -85,7 +85,7 @@ function Notifications() {
   }
 
   return (
-    <div>
+    <div className="texty-notifications">
       <h1>{__('Notifications', 'texty')}</h1>
       <p>
         {__(
