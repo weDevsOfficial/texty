@@ -25,6 +25,18 @@
             null,
             ""
          ],
+         "Phone Number (Texty)": [
+            null,
+            ""
+         ],
+         "The to phone number": [
+            null,
+            ""
+         ],
+         "The message to be sent": [
+            null,
+            ""
+         ],
          "The from phone number": [
             null,
             ""
@@ -33,11 +45,15 @@
             null,
             ""
          ],
-         "The to phone number": [
+         "Clickatell": [
             null,
             ""
          ],
-         "Clickatell": [
+         "Fake Gateway": [
+            null,
+            ""
+         ],
+         "This is a fake gateway that logs the messages to <code>debug.log</code> file without sending the actual SMS.": [
             null,
             ""
          ],
@@ -77,7 +93,27 @@
             null,
             ""
          ],
-         "Settings": [
+         "WordPress": [
+            null,
+            ""
+         ],
+         "WooCommerce": [
+            null,
+            ""
+         ],
+         "New Comment": [
+            null,
+            ""
+         ],
+         "New Order (admin)": [
+            null,
+            ""
+         ],
+         "New User Registration": [
+            null,
+            ""
+         ],
+         "Gateway Settings": [
             null,
             ""
          ],
@@ -89,31 +125,19 @@
             null,
             ""
          ],
-         "Connected": [
+         "Enable": [
             null,
             ""
          ],
-         "Not connected": [
+         "Select one or multiple user roles. Users with phone number in their profile will receive the text": [
             null,
             ""
          ],
-         "Changes have been saved": [
+         "Message": [
             null,
             ""
          ],
-         "SMS Gateway": [
-            null,
-            ""
-         ],
-         "Gateways": [
-            null,
-            ""
-         ],
-         "Saving...": [
-            null,
-            ""
-         ],
-         "Save Changes": [
+         "You may use these variables: ": [
             null,
             ""
          ],
@@ -125,7 +149,27 @@
             null,
             ""
          ],
-         "Test Message": [
+         "Phone Number": [
+            null,
+            ""
+         ],
+         "Write your message...": [
+            null,
+            ""
+         ],
+         "Sending...": [
+            null,
+            ""
+         ],
+         "Send Message": [
+            null,
+            ""
+         ],
+         "Connected": [
+            null,
+            ""
+         ],
+         "Not connected": [
             null,
             ""
          ],
@@ -137,11 +181,31 @@
             null,
             ""
          ],
-         "Sending...": [
+         "Send Test": [
             null,
             ""
          ],
-         "Send Test": [
+         "Changes have been saved": [
+            null,
+            ""
+         ],
+         "Enable or disable notification based on different events.": [
+            null,
+            ""
+         ],
+         "Saving...": [
+            null,
+            ""
+         ],
+         "Save Changes": [
+            null,
+            ""
+         ],
+         "Test Message": [
+            null,
+            ""
+         ],
+         "Quick Send": [
             null,
             ""
          ]

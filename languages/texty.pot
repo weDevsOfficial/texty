@@ -8,14 +8,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-10T09:32:07+00:00\n"
+"POT-Creation-Date: 2021-01-13T10:49:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: texty\n"
 
 #. Plugin Name of the plugin
-#: includes/Admin.php:26
-#: includes/Admin.php:27
+#: includes/Admin/Menu.php:26
+#: includes/Admin/Menu.php:27
 msgid "Texty"
 msgstr ""
 
@@ -35,6 +35,19 @@ msgstr ""
 msgid "https://tareq.co"
 msgstr ""
 
+#: includes/Admin/Profile.php:28
+msgid "Phone Number (Texty)"
+msgstr ""
+
+#: includes/Api/Send.php:35
+#: includes/Api/Tools.php:35
+msgid "The to phone number"
+msgstr ""
+
+#: includes/Api/Send.php:40
+msgid "The message to be sent"
+msgstr ""
+
 #: includes/Api/Settings.php:126
 msgid "The from phone number"
 msgstr ""
@@ -43,12 +56,16 @@ msgstr ""
 msgid "The selected gateway"
 msgstr ""
 
-#: includes/Api/Tools.php:35
-msgid "The to phone number"
-msgstr ""
-
 #: includes/Gateways/Clickatell.php:45
 msgid "Clickatell"
+msgstr ""
+
+#: includes/Gateways/Fake.php:20
+msgid "Fake Gateway"
+msgstr ""
+
+#: includes/Gateways/Fake.php:29
+msgid "This is a fake gateway that logs the messages to <code>debug.log</code> file without sending the actual SMS."
 msgstr ""
 
 #: includes/Gateways/Twilio.php:25
@@ -88,22 +105,85 @@ msgstr ""
 msgid "API Secret"
 msgstr ""
 
-#: src/components/Header.js:28
-#: src/components/Header.js:31
-#: src/pages/Settings.js:107
-msgid "Settings"
+#: includes/Notifications.php:68
+msgid "WordPress"
 msgstr ""
 
-#: src/components/Header.js:37
-#: src/components/Header.js:40
-#: src/pages/Notifications.js:8
+#: includes/Notifications.php:72
+msgid "WooCommerce"
+msgstr ""
+
+#: includes/Notifications/Comment.php:16
+msgid "New Comment"
+msgstr ""
+
+#: includes/Notifications/OrderAdmin.php:16
+msgid "New Order (admin)"
+msgstr ""
+
+#: includes/Notifications/Registration.php:16
+msgid "New User Registration"
+msgstr ""
+
+#: src/components/Header.js:30
+#: src/components/Header.js:33
+msgid "Gateway Settings"
+msgstr ""
+
+#: src/components/Header.js:39
+#: src/components/Header.js:42
+#: src/pages/Notifications.js:89
 msgid "Notifications"
 msgstr ""
 
-#: src/components/Header.js:46
-#: src/components/Header.js:49
-#: src/pages/Tools.js:52
+#: src/components/Header.js:48
+#: src/components/Header.js:51
+#: src/pages/Tools.js:15
 msgid "Tools"
+msgstr ""
+
+#: src/components/NotificationItem.js:41
+msgid "Enable"
+msgstr ""
+
+#: src/components/NotificationItem.js:54
+msgid "Select one or multiple user roles. Users with phone number in their profile will receive the text"
+msgstr ""
+
+#: src/components/NotificationItem.js:80
+#: src/components/QuickSend.js:58
+msgid "Message"
+msgstr ""
+
+#: src/components/NotificationItem.js:88
+msgid "You may use these variables: "
+msgstr ""
+
+#: src/components/QuickSend.js:29
+#: src/components/TestMessage.js:27
+msgid "Message has been sent."
+msgstr ""
+
+#: src/components/QuickSend.js:32
+#: src/components/TestMessage.js:30
+msgid "Error, message could not be sent."
+msgstr ""
+
+#: src/components/QuickSend.js:49
+msgid "Phone Number"
+msgstr ""
+
+#: src/components/QuickSend.js:60
+msgid "Write your message..."
+msgstr ""
+
+#: src/components/QuickSend.js:68
+#: src/components/TestMessage.js:59
+msgid "Sending..."
+msgstr ""
+
+#: src/components/QuickSend.js:68
+msgid "Send Message"
 msgstr ""
 
 #: src/components/Status.js:33
@@ -114,50 +194,38 @@ msgstr ""
 msgid "Not connected"
 msgstr ""
 
-#: src/pages/Settings.js:90
-msgid "Changes have been saved"
-msgstr ""
-
-#: src/pages/Settings.js:111
-msgid "SMS Gateway"
-msgstr ""
-
-#: src/pages/Settings.js:116
-msgid "Gateways"
-msgstr ""
-
-#: src/pages/Settings.js:205
-msgid "Saving..."
-msgstr ""
-
-#: src/pages/Settings.js:205
-msgid "Save Changes"
-msgstr ""
-
-#: src/pages/Tools.js:34
-msgid "Message has been sent."
-msgstr ""
-
-#: src/pages/Tools.js:37
-msgid "Error, message could not be sent."
-msgstr ""
-
-#: src/pages/Tools.js:57
-msgid "Test Message"
-msgstr ""
-
-#: src/pages/Tools.js:62
+#: src/components/TestMessage.js:47
 msgid "Test Number"
 msgstr ""
 
-#: src/pages/Tools.js:66
+#: src/components/TestMessage.js:52
 msgid "Enter a phone number to test the SMS sending."
 msgstr ""
 
-#: src/pages/Tools.js:75
-msgid "Sending..."
+#: src/components/TestMessage.js:59
+msgid "Send Test"
 msgstr ""
 
-#: src/pages/Tools.js:75
-msgid "Send Test"
+#: src/pages/Notifications.js:74
+msgid "Changes have been saved"
+msgstr ""
+
+#: src/pages/Notifications.js:91
+msgid "Enable or disable notification based on different events."
+msgstr ""
+
+#: src/pages/Notifications.js:131
+msgid "Saving..."
+msgstr ""
+
+#: src/pages/Notifications.js:131
+msgid "Save Changes"
+msgstr ""
+
+#: src/pages/Tools.js:22
+msgid "Test Message"
+msgstr ""
+
+#: src/pages/Tools.js:30
+msgid "Quick Send"
 msgstr ""
