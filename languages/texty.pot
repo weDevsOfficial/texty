@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-13T10:49:46+00:00\n"
+"POT-Creation-Date: 2021-01-14T10:48:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: texty\n"
@@ -89,6 +89,10 @@ msgstr ""
 msgid "From Number"
 msgstr ""
 
+#: includes/Gateways/Twilio.php:77
+msgid "Must be a valid number associated with your Twilio account"
+msgstr ""
+
 #: includes/Gateways/Vonage.php:25
 msgid "Vonage (nexmo)"
 msgstr ""
@@ -105,11 +109,11 @@ msgstr ""
 msgid "API Secret"
 msgstr ""
 
-#: includes/Notifications.php:68
+#: includes/Notifications.php:78
 msgid "WordPress"
 msgstr ""
 
-#: includes/Notifications.php:72
+#: includes/Notifications.php:83
 msgid "WooCommerce"
 msgstr ""
 
@@ -117,8 +121,24 @@ msgstr ""
 msgid "New Comment"
 msgstr ""
 
-#: includes/Notifications/OrderAdmin.php:16
-msgid "New Order (admin)"
+#: includes/Notifications/OrderCompleteAdmin.php:11
+msgid "Admin - When Order Status is Complete"
+msgstr ""
+
+#: includes/Notifications/OrderCompleteCustomer.php:11
+msgid "Customer - When Order Status is Complete"
+msgstr ""
+
+#: includes/Notifications/OrderHoldCustomer.php:11
+msgid "Customer - When Order Status is On Hold"
+msgstr ""
+
+#: includes/Notifications/OrderProcessingAdmin.php:11
+msgid "Admin - When Order Status is Processing"
+msgstr ""
+
+#: includes/Notifications/OrderProcessingCustomer.php:11
+msgid "Customer - When Order Status is Processing"
 msgstr ""
 
 #: includes/Notifications/Registration.php:16
@@ -132,7 +152,7 @@ msgstr ""
 
 #: src/components/Header.js:39
 #: src/components/Header.js:42
-#: src/pages/Notifications.js:89
+#: src/pages/Notifications.js:90
 msgid "Notifications"
 msgstr ""
 
@@ -142,20 +162,28 @@ msgstr ""
 msgid "Tools"
 msgstr ""
 
+#: src/components/NotificationItem.js:35
+msgid "active"
+msgstr ""
+
+#: src/components/NotificationItem.js:35
+msgid "inactive"
+msgstr ""
+
 #: src/components/NotificationItem.js:41
 msgid "Enable"
 msgstr ""
 
-#: src/components/NotificationItem.js:54
+#: src/components/NotificationItem.js:52
 msgid "Select one or multiple user roles. Users with phone number in their profile will receive the text"
 msgstr ""
 
-#: src/components/NotificationItem.js:80
+#: src/components/NotificationItem.js:78
 #: src/components/QuickSend.js:58
 msgid "Message"
 msgstr ""
 
-#: src/components/NotificationItem.js:88
+#: src/components/NotificationItem.js:86
 msgid "You may use these variables: "
 msgstr ""
 
@@ -206,19 +234,23 @@ msgstr ""
 msgid "Send Test"
 msgstr ""
 
-#: src/pages/Notifications.js:74
+#: src/pages/Notifications.js:75
 msgid "Changes have been saved"
 msgstr ""
 
-#: src/pages/Notifications.js:91
+#: src/pages/Notifications.js:92
 msgid "Enable or disable notification based on different events."
 msgstr ""
 
-#: src/pages/Notifications.js:131
+#: src/pages/Notifications.js:113
+msgid "Plugin not installed"
+msgstr ""
+
+#: src/pages/Notifications.js:151
 msgid "Saving..."
 msgstr ""
 
-#: src/pages/Notifications.js:131
+#: src/pages/Notifications.js:151
 msgid "Save Changes"
 msgstr ""
 

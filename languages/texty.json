@@ -77,6 +77,10 @@
             null,
             ""
          ],
+         "Must be a valid number associated with your Twilio account": [
+            null,
+            ""
+         ],
          "Vonage (nexmo)": [
             null,
             ""
@@ -105,7 +109,23 @@
             null,
             ""
          ],
-         "New Order (admin)": [
+         "Admin - When Order Status is Complete": [
+            null,
+            ""
+         ],
+         "Customer - When Order Status is Complete": [
+            null,
+            ""
+         ],
+         "Customer - When Order Status is On Hold": [
+            null,
+            ""
+         ],
+         "Admin - When Order Status is Processing": [
+            null,
+            ""
+         ],
+         "Customer - When Order Status is Processing": [
             null,
             ""
          ],
@@ -122,6 +142,14 @@
             ""
          ],
          "Tools": [
+            null,
+            ""
+         ],
+         "active": [
+            null,
+            ""
+         ],
+         "inactive": [
             null,
             ""
          ],
@@ -190,6 +218,10 @@
             ""
          ],
          "Enable or disable notification based on different events.": [
+            null,
+            ""
+         ],
+         "Plugin not installed": [
             null,
             ""
          ],
