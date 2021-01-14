@@ -125,6 +125,33 @@ abstract class Notification {
     }
 
     /**
+     * Global replacement keys
+     *
+     * @return array
+     */
+    public function global_replacement_keys() {
+        return [
+            'site_name' => 'get_bloginfo',
+            'site_url'  => 'home_url',
+        ];
+    }
+
+    /**
+     * Replace messages with global replacement keys
+     *
+     * @param string $message
+     *
+     * @return string
+     */
+    protected function replace_global_keys( $message ) {
+        foreach ( $this->global_replacement_keys() as $search => $function ) {
+            $message = str_replace( '{' . $search . '}', $function(), $message );
+        }
+
+        return $message;
+    }
+
+    /**
      * Return recipients
      *
      * @return array
@@ -226,15 +253,21 @@ abstract class Notification {
      * @return void
      */
     public function send() {
+        if ( ! $this->enabled() ) {
+            return;
+        }
+
         $recipients = $this->get_recipients();
 
-        if ( $recipients ) {
-            $content = $this->get_message();
-            $gateway = texty()->gateways();
+        if ( ! $recipients ) {
+            return;
+        }
 
-            foreach ( $recipients as $number ) {
-                $gateway->send( $number, $content );
-            }
+        $content = $this->get_message();
+        $gateway = texty()->gateways();
+
+        foreach ( $recipients as $number ) {
+            $gateway->send( $number, $content );
         }
     }
 }

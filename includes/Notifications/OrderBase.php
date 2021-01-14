@@ -2,30 +2,12 @@
 
 namespace Texty\Notifications;
 
-class OrderAdmin extends Notification {
+class OrderBase extends Notification {
 
     /**
      * @var object
      */
-    private $order;
-
-    /**
-     * Initialize
-     */
-    public function __construct() {
-        $this->title              = __( 'New Order (admin)', 'texty' );
-        $this->id                 = 'order_admin';
-        $this->group              = 'wc';
-        $this->default_recipients = ['administrator'];
-
-        $this->default = <<<'EOD'
-New order received #{order_id}, paid via {payment_method}.
-
-Customer: {customer_name} ({customer_email})
-Status: {status}
-Order Total: {order_total}
-EOD;
-    }
+    protected $order;
 
     /**
      * Set the user ID
@@ -55,16 +37,14 @@ EOD;
         foreach ( $this->replacement_keys() as $search => $method ) {
             $value = method_exists( $this->order, $method ) ? $this->order->$method() : '';
 
-            if ( 'customer_name' === $search ) {
-                $value = $this->order->get_user()->display_name;
-            }
-
             if ( 'order_total' === $search ) {
                 $value = strip_tags( html_entity_decode( $value ) );
             }
 
             $message = str_replace( '{' . $search . '}', $value, $message );
         }
+
+        $message = $this->replace_global_keys( $message );
 
         return $message;
     }
@@ -91,11 +71,48 @@ EOD;
             'payment_method'  => 'get_payment_method_title',
             'shipping_method' => 'get_shipping_method',
             'transaction_id'  => 'get_transaction_id',
-            'customer_name'   => 'customer_name',
-            'customer_email'  => 'get_billing_email',
+            'billing_name'    => 'get_formatted_billing_full_name',
+            'billing_email'   => 'get_billing_email',
             'order_total'     => 'get_formatted_order_total',
             'shipping_total'  => 'get_shipping_total',
             'tax_total'       => 'get_total_tax',
         ];
+    }
+
+    public function send() {
+        if ( ! $this->enabled() ) {
+            return;
+        }
+
+        $meta_key = '_texty_' . $this->get_id();
+        $has_sent = $this->order->get_meta( $meta_key, true );
+
+        // if we've already sent the message, don't send again
+        if ( $has_sent ) {
+            return;
+        }
+
+        // mark as sent
+        $this->order->add_meta_data( $meta_key, 1 );
+        $this->order->save_meta_data();
+
+        if ( 'user' === $this->get_type() ) {
+            $number = $this->order->get_billing_phone();
+
+            $recipients = $number ? [ $number ] : [];
+        } else {
+            $recipients = $this->get_recipients();
+        }
+
+        if ( ! $recipients ) {
+            return;
+        }
+
+        $content = $this->get_message();
+        $gateway = texty()->gateways();
+
+        foreach ( $recipients as $number ) {
+            $gateway->send( $number, $content );
+        }
     }
 }

@@ -70,7 +70,10 @@ class Notifications extends Base {
                         'route'        => 'sms',
                         'group'        => $obj->get_group(),
                         'recipients'   => $obj->get_recipients_raw(),
-                        'replacements' => array_keys( $obj->replacement_keys() ),
+                        'replacements' => array_merge(
+                            array_keys( $obj->replacement_keys() ),
+                            array_keys( $obj->global_replacement_keys() )
+                        ),
                     ];
                 }, $notifications ),
             ];

@@ -55,6 +55,8 @@ EOD;
             $message = str_replace( '{' . $search . '}', $value, $message );
         }
 
+        $message = $this->replace_global_keys( $message );
+
         return $message;
     }
 

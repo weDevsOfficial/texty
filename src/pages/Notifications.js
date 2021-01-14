@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import { toast } from 'react-toastify';
 import apiFetch from '@wordpress/api-fetch';
+import classNames from 'classnames';
 import {
   Button,
   Card,
@@ -95,31 +96,50 @@ function Notifications() {
       </p>
 
       <form onSubmit={handleSubmit}>
-        {Object.keys(settings.groups).map((group) => (
-          <Card key={group}>
-            <CardHeader>{settings.groups[group].title}</CardHeader>
-            <CardBody className="has-panel">
-              <Panel>
-                {Object.keys(settings.notifications).map((notify) => {
-                  const notification = settings.notifications[notify];
+        {Object.keys(settings.groups).map((group) => {
+          const { title, available } = settings.groups[group];
 
-                  return (
-                    group === notification.group && (
-                      <NotificationItem
-                        key={notify}
-                        title={notification.title}
-                        roles={settings.roles}
-                        keyName={notification.id}
-                        settings={notification}
-                        setOption={setOption}
-                      />
-                    )
-                  );
+          return (
+            <Card key={group}>
+              <CardHeader
+                className={classNames({
+                  inactive: !available,
                 })}
-              </Panel>
-            </CardBody>
-          </Card>
-        ))}
+              >
+                {title}
+
+                {!available && (
+                  <span class="sub-heading">
+                    {__('Plugin not installed', 'texty')}
+                  </span>
+                )}
+              </CardHeader>
+
+              {available && (
+                <CardBody className="has-panel">
+                  <Panel>
+                    {Object.keys(settings.notifications).map((notify) => {
+                      const notification = settings.notifications[notify];
+
+                      return (
+                        group === notification.group && (
+                          <NotificationItem
+                            key={notify}
+                            title={notification.title}
+                            roles={settings.roles}
+                            keyName={notification.id}
+                            settings={notification}
+                            setOption={setOption}
+                          />
+                        )
+                      );
+                    })}
+                  </Panel>
+                </CardBody>
+              )}
+            </Card>
+          );
+        })}
 
         <div className="submit-area">
           <Button

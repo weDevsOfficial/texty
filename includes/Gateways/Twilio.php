@@ -74,7 +74,7 @@ class Twilio implements GatewayInterface {
                 'name'  => __( 'From Number', 'texty' ),
                 'type'  => 'text',
                 'value' => isset( $creds['from'] ) ? $creds['from'] : '',
-                'help'  => '',
+                'help'  => __( 'Must be a valid number associated with your Twilio account', 'texty' ),
             ],
         ];
     }

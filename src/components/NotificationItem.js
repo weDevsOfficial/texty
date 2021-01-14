@@ -32,7 +32,7 @@ function NotificationItem({
               active: settings.enabled === true,
             })}
           >
-            {settings.enabled ? 'active' : 'inactive'}
+            {settings.enabled ? __('active', 'texty') : __('inactive', 'texty')}
           </span>
         </>
       }
@@ -44,56 +44,52 @@ function NotificationItem({
         onChange={(isChecked) => setOption(keyName, 'enabled', isChecked)}
       />
 
-      {settings.enabled && (
-        <>
-          {settings.type === 'role' && (
-            <BaseControl
-              label={__('Recipients')}
-              help={
-                settings.type === 'role'
-                  ? __(
-                      'Select one or multiple user roles. Users with phone number in their profile will receive the text',
-                      'texty'
-                    )
-                  : ''
-              }
-            >
-              <Select
-                required={true}
-                isMulti={settings.type === 'role'}
-                value={roles.filter((item) =>
-                  settings.recipients.includes(item.value)
-                )}
-                options={roles}
-                onChange={(options) => {
-                  setOption(
-                    keyName,
-                    'recipients',
-                    options !== null ? options.map((item) => item.value) : []
-                  );
-                }}
-              />
-            </BaseControl>
-          )}
-
-          <TextareaControl
-            label={__('Message', 'texty')}
-            className="monospace"
+      {settings.type === 'role' && (
+        <BaseControl
+          label={__('Recipients')}
+          help={
+            settings.type === 'role'
+              ? __(
+                  'Select one or multiple user roles. Users with phone number in their profile will receive the text',
+                  'texty'
+                )
+              : ''
+          }
+        >
+          <Select
             required={true}
-            help={
-              <span
-                className="help"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    __('You may use these variables: ', 'texty') + replacements,
-                }}
-              ></span>
-            }
-            value={settings.message}
-            onChange={(text) => setOption(keyName, 'message', text)}
+            isMulti={settings.type === 'role'}
+            value={roles.filter((item) =>
+              settings.recipients.includes(item.value)
+            )}
+            options={roles}
+            onChange={(options) => {
+              setOption(
+                keyName,
+                'recipients',
+                options !== null ? options.map((item) => item.value) : []
+              );
+            }}
           />
-        </>
+        </BaseControl>
       )}
+
+      <TextareaControl
+        label={__('Message', 'texty')}
+        className="monospace"
+        required={true}
+        help={
+          <span
+            className="help"
+            dangerouslySetInnerHTML={{
+              __html:
+                __('You may use these variables: ', 'texty') + replacements,
+            }}
+          ></span>
+        }
+        value={settings.message}
+        onChange={(text) => setOption(keyName, 'message', text)}
+      />
     </PanelBody>
   );
 }

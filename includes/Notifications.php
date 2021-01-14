@@ -49,8 +49,18 @@ class Notifications {
         $notifications = [
             'registration' => __NAMESPACE__ . '\Notifications\Registration',
             'comment'      => __NAMESPACE__ . '\Notifications\Comment',
-            'order_admin'  => __NAMESPACE__ . '\Notifications\OrderAdmin',
         ];
+
+        if ( class_exists( 'WooCommerce' ) ) {
+            // WC Admin
+            $notifications['order_admin_processing'] = __NAMESPACE__ . '\Notifications\OrderProcessingAdmin';
+            $notifications['order_admin_complete']   = __NAMESPACE__ . '\Notifications\OrderCompleteAdmin';
+
+            // WC Customers
+            $notifications['order_customer_hold']       = __NAMESPACE__ . '\Notifications\OrderHoldCustomer';
+            $notifications['order_customer_processing'] = __NAMESPACE__ . '\Notifications\OrderProcessingCustomer';
+            $notifications['order_customer_complete']   = __NAMESPACE__ . '\Notifications\OrderCompleteCustomer';
+        }
 
         $this->notifications = apply_filters( 'texty_available_notifications', $notifications );
 
@@ -67,10 +77,12 @@ class Notifications {
             'wp' => [
                 'title'       => __( 'WordPress', 'texty' ),
                 'description' => '',
+                'available'   => true,
             ],
             'wc' => [
                 'title'       => __( 'WooCommerce', 'texty' ),
                 'description' => '',
+                'available'   => class_exists( 'WooCommerce' ) ? true : false,
             ],
         ] );
     }

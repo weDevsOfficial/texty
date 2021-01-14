@@ -214,14 +214,19 @@ $primary-color: #006eef;
       font-size: 18px;
       padding: 20px 30px;
       font-weight: 500;
+
+      .sub-heading {
+        font-size: 14px;
+        font-weight: normal;
+      }
+
+      &.inactive {
+        color: #999;
+      }
     }
 
     .components-card__body {
       padding: 30px;
-    }
-
-    .has-panel.components-card__body {
-      padding: 20px 30px;
     }
 
     @media screen and (max-width: 425px) {
@@ -281,10 +286,19 @@ $primary-color: #006eef;
         }
       }
 
+      &:nth-child(odd) .components-panel__body-title {
+        background-color: #f7f7f7;
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+
       &.is-opened {
         margin-bottom: 20px;
 
         .components-panel__body-title {
+          background-color: #fff;
           border-bottom: 1px solid #e0e0e0;
           margin-bottom: 20px;
         }
