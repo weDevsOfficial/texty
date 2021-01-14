@@ -52,13 +52,13 @@ class Notifications extends Base {
      * @return WP_Rest_Response|WP_Error
      */
     public function get_items( $request ) {
-        if ( isset( $request['context'] ) && $request['context'] == 'edit' ) {
+        if ( isset( $request['context'] ) && $request['context'] === 'edit' ) {
             $notifications = texty()->notifications()->all();
 
             $response = [
                 'groups'        => texty()->notifications()->get_groups(),
                 'roles'         => $this->get_roles(),
-                'notifications' => array_map( function ( $notifier ) {
+                'notifications' => array_map( function ( $notifier ) { // phpcs:ignore
                     $obj = new $notifier();
 
                     return [
@@ -75,7 +75,7 @@ class Notifications extends Base {
                             array_keys( $obj->global_replacement_keys() )
                         ),
                     ];
-                }, $notifications ),
+                }, $notifications ), // phpcs:ignore
             ];
         } else {
             $response = texty()->notifications()->settings();

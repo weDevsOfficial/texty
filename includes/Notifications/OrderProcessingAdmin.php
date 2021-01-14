@@ -11,7 +11,7 @@ class OrderProcessingAdmin extends OrderBase {
         $this->title              = __( 'Admin - When Order Status is Processing', 'texty' );
         $this->id                 = 'order_admin_processing';
         $this->group              = 'wc';
-        $this->default_recipients = ['administrator'];
+        $this->default_recipients = [ 'administrator' ];
 
         $this->default = <<<'EOD'
 New order received #{order_id}, paid via {payment_method}.

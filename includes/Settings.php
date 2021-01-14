@@ -8,9 +8,9 @@ namespace Texty;
 class Settings {
 
     /**
-     * Option key to hold the settings
+     * Option key to hold the settings in database
      */
-    const option_key = 'texty_settings';
+    const OPTION_KEY = 'texty_settings';
 
     /**
      * Return all the settings
@@ -18,7 +18,7 @@ class Settings {
      * @return array
      */
     public function all() {
-        $default = apply_filters( 'texty_settings_default', [
+        $default = apply_filters( 'texty_settings_default', [ // phpcs:ignore
             'gateway' => '',
             'twilio'  => [
                 'sid'   => '',
@@ -30,9 +30,9 @@ class Settings {
                 'secret' => '',
                 'from'   => '',
             ],
-        ] );
+        ] ); // phpcs:ignore
 
-        $settings = get_option( self::option_key, [] );
+        $settings = get_option( self::OPTION_KEY, [] );
 
         return wp_parse_args( $settings, $default );
     }

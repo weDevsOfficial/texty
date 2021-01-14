@@ -11,7 +11,7 @@ class OrderCompleteAdmin extends OrderBase {
         $this->title              = __( 'Admin - When Order Status is Complete', 'texty' );
         $this->id                 = 'order_admin_complete';
         $this->group              = 'wc';
-        $this->default_recipients = ['administrator'];
+        $this->default_recipients = [ 'administrator' ];
 
         $this->default = <<<'EOD'
 New order received #{order_id}, paid via {payment_method}.

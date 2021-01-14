@@ -191,6 +191,7 @@ abstract class Notification {
         }
 
         foreach ( $roles as $role ) {
+            // phpcs:disable
             $users = get_users( [
                 'role'       => $role,
                 'fields'     => 'ID',
@@ -200,13 +201,14 @@ abstract class Notification {
                     ],
                 ],
             ] );
+            // phpcs:enable
 
             if ( ! $users ) {
                 continue;
             }
 
             $results = $wpdb->get_col(
-                sprintf( "SELECT `meta_value` from $wpdb->usermeta WHERE `user_id` IN (%s) AND `meta_key` = 'texty_phone'", implode( ', ', $users ) )
+                sprintf( "SELECT `meta_value` from $wpdb->usermeta WHERE `user_id` IN (%s) AND `meta_key` = 'texty_phone'", implode( ', ', $users ) ) // phpcs:ignore
             );
 
             foreach ( $results as $number ) {

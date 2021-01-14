@@ -10,7 +10,7 @@ class Notifications {
     /**
      * Option key to hold the notifications
      */
-    const option_key = 'texty_notifications';
+    const OPTION_KEY = 'texty_notifications';
 
     /**
      * Notifications
@@ -73,7 +73,7 @@ class Notifications {
      * @return void
      */
     public function get_groups() {
-        return apply_filters( 'texty_notification_groups', [
+        return apply_filters( 'texty_notification_groups', [ // phpcs:ignore
             'wp' => [
                 'title'       => __( 'WordPress', 'texty' ),
                 'description' => '',
@@ -84,7 +84,7 @@ class Notifications {
                 'description' => '',
                 'available'   => class_exists( 'WooCommerce' ) ? true : false,
             ],
-        ] );
+        ] ); // phpcs:ignore
     }
 
     /**
@@ -93,6 +93,6 @@ class Notifications {
      * @return array
      */
     public function settings() {
-        return get_option( self::option_key, [] );
+        return get_option( self::OPTION_KEY, [] );
     }
 }

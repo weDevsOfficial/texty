@@ -38,7 +38,7 @@ class OrderBase extends Notification {
             $value = method_exists( $this->order, $method ) ? $this->order->$method() : '';
 
             if ( 'order_total' === $search ) {
-                $value = strip_tags( html_entity_decode( $value ) );
+                $value = wp_strip_all_tags( html_entity_decode( $value ) );
             }
 
             $message = str_replace( '{' . $search . '}', $value, $message );

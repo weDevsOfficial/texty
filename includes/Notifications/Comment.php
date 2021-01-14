@@ -15,7 +15,7 @@ class Comment extends Notification {
     public function __construct() {
         $this->title              = __( 'New Comment', 'texty' );
         $this->id                 = 'comment';
-        $this->default_recipients = ['administrator'];
+        $this->default_recipients = [ 'administrator' ];
         $this->default            = <<<'EOD'
 A new comment added on the post "{post_title}" by {author} ({email}).
 
@@ -51,7 +51,7 @@ EOD;
         $comment = get_comment( $this->comment_id );
 
         foreach ( $this->replacement_keys() as $search => $value ) {
-            $value   = ( $search == 'post_url' ) ? get_permalink( $comment->comment_post_ID ) : $comment->$value;
+            $value   = ( $search === 'post_url' ) ? get_permalink( $comment->comment_post_ID ) : $comment->$value;
             $message = str_replace( '{' . $search . '}', $value, $message );
         }
 

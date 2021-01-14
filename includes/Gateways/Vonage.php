@@ -41,6 +41,7 @@ class Vonage implements GatewayInterface {
      */
     public function description() {
         return sprintf(
+            // translators: Vonage dashboard settings URL
             __(
                 'Send SMS with Vonage (formerly Nexmo). Follow <a href="%s" target="_blank">this link</a> to get the API Key and Secret from Vonage.',
                 'texty'
@@ -108,7 +109,7 @@ class Vonage implements GatewayInterface {
             return $request;
         }
 
-        if ( $body->messages[0]->status != '0' ) {
+        if ( $body->messages[0]->status !== '0' ) {
             return new WP_Error(
                 $body->messages[0]->status,
                 $body->messages[0]->{'error-text'}

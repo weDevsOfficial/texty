@@ -15,7 +15,7 @@ class Registration extends Notification {
     public function __construct() {
         $this->title              = __( 'New User Registration', 'texty' );
         $this->id                 = 'registration';
-        $this->default_recipients = ['administrator'];
+        $this->default_recipients = [ 'administrator' ];
 
         $this->default = <<<'EOD'
 A new user registered on your site with the username "{username}".
