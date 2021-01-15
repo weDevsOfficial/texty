@@ -103,7 +103,7 @@ class Notifications extends Base {
             }
         }
 
-        update_option( TextyNotifications::option_key, $settings, false );
+        update_option( TextyNotifications::OPTION_KEY, $settings, false );
 
         $request->set_param( 'context', 'edit' );
 
