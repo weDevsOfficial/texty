@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/weDevsOfficial/texty
  * Author: weDevs
  * Author URI: https://tareq.co
- * Version: 0.1
+ * Version: 0.2
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: texty
@@ -24,7 +24,7 @@ final class Texty {
      *
      * @var string
      */
-    private $version = '0.1';
+    private $version = '0.2';
 
     /**
      * Instances array
