@@ -1,4 +1,4 @@
-=== Texty - SMS Notification for WordPress ===
+=== Texty - SMS Notification for WordPress, WooCommerce, Dokan and more ===
 Contributors: tareq1988, wedevs, nizamuddinbabu
 Donate link: https://tareq.co/donate/
 Tags: sms, text, notification, twilio, nexmo, vonage
@@ -39,7 +39,11 @@ Another example might be an order notification from WooCommerce. Upon receiving 
 
 #### WooCommerce
 
-- **New Order (Admin)** - Get an alert when a new order is received.
+- **Admin - When Order Status is Processing** - Get an alert when a new order is received in *Processing* status.
+- **Admin - When Order Status is Complete** - Get an alert when a new order is *Complete*.
+- **Customer - When Order Status is On Hold** - Send an alert to the customer when a new order received, but is in *On Hold* status.
+- **Customer - When Order Status is Processing** - Send an alert to the customer when a new order changes to *Processing* status.
+- **Customer - When Order Status is Complete** - Send an alert to the customer when a order changes to *Complete* status.
 
 #### Disclaimer 
 
@@ -73,12 +77,15 @@ Well, it depends. Let us know what you want, we might consider adding that featu
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif).
-2. This is the second screen shot
+1. Gateway settings page
+1. All supported notifications panel
+1. Tools page for quick testing
+1. WooCommerce admin notification
+1. WooCommerce customer notification
 
 == Changelog ==
 
-= v0.1 = 
+= v0.2 (18 Jan, 2021) = 
 
 - Initial Release
 

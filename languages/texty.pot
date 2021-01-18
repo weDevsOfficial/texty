@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-18T10:43:26+00:00\n"
+"POT-Creation-Date: 2021-01-18T12:18:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: texty\n"
@@ -143,19 +143,19 @@ msgstr ""
 msgid "New User Registration"
 msgstr ""
 
-#: src/components/Header.js:30
-#: src/components/Header.js:33
+#: src/components/Header.js:35
+#: src/components/Header.js:38
 msgid "Gateway Settings"
 msgstr ""
 
-#: src/components/Header.js:39
-#: src/components/Header.js:42
+#: src/components/Header.js:44
+#: src/components/Header.js:47
 #: src/pages/Notifications.js:90
 msgid "Notifications"
 msgstr ""
 
-#: src/components/Header.js:48
-#: src/components/Header.js:51
+#: src/components/Header.js:53
+#: src/components/Header.js:56
 #: src/pages/Tools.js:15
 msgid "Tools"
 msgstr ""
