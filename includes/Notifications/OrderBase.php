@@ -76,6 +76,7 @@ class OrderBase extends Notification {
             'order_total'     => 'get_formatted_order_total',
             'shipping_total'  => 'get_shipping_total',
             'tax_total'       => 'get_total_tax',
+            'discount'        => 'get_discount_total',
         ];
     }
 
