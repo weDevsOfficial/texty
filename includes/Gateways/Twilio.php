@@ -104,7 +104,12 @@ class Twilio implements GatewayInterface {
 
         $endpoint = str_replace( '{sid}', $creds['sid'], self::ENDPOINT );
         $response = wp_remote_post( $endpoint, $args );
-        $body     = json_decode( wp_remote_retrieve_body( $response ) );
+
+        if ( is_wp_error( $response ) ) {
+            return $response;
+        }
+
+        $body = json_decode( wp_remote_retrieve_body( $response ) );
 
         if ( 201 !== $response['response']['code'] ) {
             return new WP_Error( $body->code, $body->message );
