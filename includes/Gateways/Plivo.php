@@ -124,6 +124,30 @@ class Plivo implements GatewayInterface {
     public function validate( $request ) {
         $creds = $request->get_param( 'plivo' );
 
+        $args = [
+            'headers' => [
+                'Authorization' => 'Basic ' . base64_encode( $creds['auth_id'] . ':' . $creds['token'] ),
+                // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+            ],
+            'body'    => [
+                'limit'  => 5,
+                'offset' => 0,
+            ],
+        ];
+
+        $endpoint      = "https://api.plivo.com/v1/Account/{$creds['auth_id']}/Message/";
+        $response      = wp_remote_get( $endpoint, $args );
+        $body          = json_decode( wp_remote_retrieve_body( $response ) );
+        $response_code = wp_remote_retrieve_response_code( $response );
+
+        if ( 200 !== $response_code ) {
+            return new WP_Error(
+                $body->code,
+                $body->detail ? $body->detail : $body->message,
+                $body
+            );
+        }
+
         return [
             'auth_id' => $creds['auth_id'],
             'token'   => $creds['token'],
