@@ -1,0 +1,24 @@
+{
+    "exclude": [
+        ".babelrc",
+        ".editorconfig",
+        ".gitignore",
+        ".php_cs",
+        ".prettierrc",
+        "README.md",
+        "appsero.json",
+        "bin",
+        "build",
+        "composer.json",
+        "composer.lock",
+        "node_modules",
+        "package.json",
+        "phpcs.xml",
+        "postcss.config.js",
+        "readme.txt",
+        "src",
+        "webpack.config.js",
+        "yarn-error.log",
+        "yarn.lock"
+    ]
+}
