@@ -47,19 +47,24 @@ class Notifications {
         }
 
         $notifications = [
-            'registration' => __NAMESPACE__ . '\Notifications\Registration',
-            'comment'      => __NAMESPACE__ . '\Notifications\Comment',
+            'registration' => __NAMESPACE__ . '\Notifications\WP\Registration',
+            'comment'      => __NAMESPACE__ . '\Notifications\WP\Comment',
         ];
 
         if ( class_exists( 'WooCommerce' ) ) {
             // WC Admin
-            $notifications['order_admin_processing'] = __NAMESPACE__ . '\Notifications\OrderProcessingAdmin';
-            $notifications['order_admin_complete']   = __NAMESPACE__ . '\Notifications\OrderCompleteAdmin';
+            $notifications['order_admin_processing'] = __NAMESPACE__ . '\Notifications\WC\ProcessingAdmin';
+            $notifications['order_admin_complete']   = __NAMESPACE__ . '\Notifications\WC\CompleteAdmin';
 
             // WC Customers
-            $notifications['order_customer_hold']       = __NAMESPACE__ . '\Notifications\OrderHoldCustomer';
-            $notifications['order_customer_processing'] = __NAMESPACE__ . '\Notifications\OrderProcessingCustomer';
-            $notifications['order_customer_complete']   = __NAMESPACE__ . '\Notifications\OrderCompleteCustomer';
+            $notifications['order_customer_hold']       = __NAMESPACE__ . '\Notifications\WC\HoldCustomer';
+            $notifications['order_customer_processing'] = __NAMESPACE__ . '\Notifications\WC\ProcessingCustomer';
+            $notifications['order_customer_complete']   = __NAMESPACE__ . '\Notifications\WC\CompleteCustomer';
+        }
+
+        if ( class_exists( 'WeDevs_Dokan' ) ) {
+            $notifications['order_dokan_processing'] = __NAMESPACE__ . '\Notifications\Dokan\ProcessingVendor';
+            $notifications['order_dokan_complete']   = __NAMESPACE__ . '\Notifications\Dokan\CompleteVendor';
         }
 
         $this->notifications = apply_filters( 'texty_available_notifications', $notifications );
@@ -83,6 +88,11 @@ class Notifications {
                 'title'       => __( 'WooCommerce', 'texty' ),
                 'description' => '',
                 'available'   => class_exists( 'WooCommerce' ) ? true : false,
+            ],
+            'dokan' => [
+                'title'       => __( 'Dokan', 'texty' ),
+                'description' => '',
+                'available'   => class_exists( 'WeDevs_Dokan' ) ? true : false,
             ],
         ] ); // phpcs:ignore
     }

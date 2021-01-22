@@ -34,7 +34,7 @@ class Twilio implements GatewayInterface {
         return sprintf(
             // translators: URL to Twilio settings and help docs
             __(
-                'Send SMS with Twilio. Follow <a href="%s" target="_blank">this link</a> to get the Account SID and Token from Twilio. Follow <a href="%s" target="_blank">these instructions</a> to configure the gateway.',
+                'Send SMS with Twilio. Follow <a href="%1$s" target="_blank">this link</a> to get the Account SID and Token from Twilio. Follow <a href="%2$s" target="_blank">these instructions</a> to configure the gateway.',
                 'texty'
             ),
             'https://www.twilio.com/console/project/settings',

@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Texty
  * Description: SMS Notification for WordPress
- * Plugin URI: https://github.com/weDevsOfficial/texty
+ * Plugin URI: https://wordpress.org/plugins/texty/
  * Author: weDevs
- * Author URI: https://tareq.co
- * Version: 0.2
+ * Author URI: https://wedevs.com
+ * Version: 1.0
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: texty
@@ -24,7 +24,7 @@ final class Texty {
      *
      * @var string
      */
-    private $version = '0.2';
+    private $version = '1.0';
 
     /**
      * Instances array
@@ -38,6 +38,7 @@ final class Texty {
      */
     public function __construct() {
         $this->define_constants();
+        $this->appsero_init();
 
         // run the installer
         register_activation_hook( __FILE__, [ $this, 'activate' ] );
@@ -135,6 +136,18 @@ final class Texty {
         }
 
         return $this->instances['notification'];
+    }
+
+    /**
+     * Initialize the plugin tracker
+     *
+     * @return void
+     */
+    public function appsero_init() {
+        $client = new Appsero\Client( 'd4c17b0f-8f01-4b95-a8de-42b0641eec9a', 'Texty', __FILE__ );
+
+        // Active insights
+        $client->insights()->init();
     }
 }
 
