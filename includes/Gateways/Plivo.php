@@ -34,7 +34,7 @@ class Plivo implements GatewayInterface {
         return sprintf(
             // translators: URL to Plivo settings and help docs
             __(
-                'Send SMS with Plivo. Follow <a href="%s" target="_blank">this link</a> to get the Auth ID and Token from Plivo. Follow <a href="%s" target="_blank">these instructions</a> to configure the gateway.',
+                'Send SMS with Plivo. Follow <a href="%1$s" target="_blank">this link</a> to get the Auth ID and Token from Plivo. Follow <a href="%2$s" target="_blank">these instructions</a> to configure the gateway.',
                 'texty'
             ),
             'https://console.plivo.com/sms/reporting/',
@@ -94,8 +94,7 @@ class Plivo implements GatewayInterface {
 
         $args = [
             'headers' => [
-                'Authorization' => 'Basic ' . base64_encode( $creds['auth_id'] . ':' . $creds['token'] ),
-                // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+                'Authorization' => 'Basic ' . base64_encode( $creds['auth_id'] . ':' . $creds['token'] ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
             ],
             'body'    => [
                 'src'  => $creds['from'],
@@ -127,8 +126,7 @@ class Plivo implements GatewayInterface {
 
         $args = [
             'headers' => [
-                'Authorization' => 'Basic ' . base64_encode( $creds['auth_id'] . ':' . $creds['token'] ),
-                // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+                'Authorization' => 'Basic ' . base64_encode( $creds['auth_id'] . ':' . $creds['token'] ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
             ],
             'body'    => [
                 'limit'  => 5,

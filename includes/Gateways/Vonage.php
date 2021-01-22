@@ -43,7 +43,7 @@ class Vonage implements GatewayInterface {
         return sprintf(
             // translators: Vonage dashboard settings URL and help docs
             __(
-                'Send SMS with Vonage (formerly Nexmo). Follow <a href="%s" target="_blank">this link</a> to get the API Key and Secret from Vonage.  Follow <a href="%s" target="_blank">these instructions</a> to configure the gateway.',
+                'Send SMS with Vonage (formerly Nexmo). Follow <a href="%1$s" target="_blank">this link</a> to get the API Key and Secret from Vonage.  Follow <a href="%2$s" target="_blank">these instructions</a> to configure the gateway.',
                 'texty'
             ),
             'https://dashboard.nexmo.com/settings',
