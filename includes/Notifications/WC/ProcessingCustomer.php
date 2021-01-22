@@ -1,8 +1,8 @@
 <?php
 
-namespace Texty\Notifications;
+namespace Texty\Notifications\WC;
 
-class OrderProcessingCustomer extends OrderBase {
+class ProcessingCustomer extends Base {
 
     /**
      * Initialize

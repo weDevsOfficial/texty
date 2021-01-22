@@ -1,8 +1,11 @@
 <?php
 
-namespace Texty\Notifications;
+namespace Texty\Notifications\WC;
 
-class OrderBase extends Notification {
+use Texty\Notifications\Notification;
+use WC_Order_Item_Product;
+
+class Base extends Notification {
 
     /**
      * @var object
@@ -41,12 +44,38 @@ class OrderBase extends Notification {
                 $value = wp_strip_all_tags( html_entity_decode( $value ) );
             }
 
+            if ( 'items' === $search ) {
+                $value = $this->get_items();
+            }
+
             $message = str_replace( '{' . $search . '}', $value, $message );
         }
 
         $message = $this->replace_global_keys( $message );
 
         return $message;
+    }
+
+    /**
+     * Get product items from the order
+     *
+     * @return string
+     */
+    protected function get_items() {
+        $products = [];
+
+        foreach ( $this->order->get_items() as $item ) {
+            if ( ! $item instanceof WC_Order_Item_Product ) {
+                continue;
+            }
+
+            $product    = $item->get_product();
+            $products[] = sprintf( '%s x %d', $product->get_name(), $item->get_quantity() );
+        }
+
+        $names = implode( "\n", $products );
+
+        return $names;
     }
 
     /**
@@ -66,6 +95,7 @@ class OrderBase extends Notification {
     public function replacement_keys() {
         return [
             'order_id'        => 'get_id',
+            'items'           => 'products',
             'date'            => 'get_date_paid',
             'status'          => 'get_status',
             'payment_method'  => 'get_payment_method_title',

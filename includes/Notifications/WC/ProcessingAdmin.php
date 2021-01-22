@@ -1,8 +1,8 @@
 <?php
 
-namespace Texty\Notifications;
+namespace Texty\Notifications\WC;
 
-class OrderProcessingAdmin extends OrderBase {
+class ProcessingAdmin extends Base {
 
     /**
      * Initialize
@@ -15,6 +15,8 @@ class OrderProcessingAdmin extends OrderBase {
 
         $this->default = <<<'EOD'
 New order received #{order_id}, paid via {payment_method}.
+
+{items}
 
 Customer: {billing_name} ({billing_email})
 Status: {status}

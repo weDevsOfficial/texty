@@ -2,6 +2,7 @@
 
 namespace Texty;
 
+use Texty\Integrations\Dokan;
 use Texty\Integrations\WooCommerce;
 
 /**
@@ -20,6 +21,7 @@ class Dispatcher {
 
         // WooCommerce
         new WooCommerce();
+        new Dokan();
     }
 
     /**

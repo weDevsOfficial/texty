@@ -1,6 +1,8 @@
 <?php
 
-namespace Texty\Notifications;
+namespace Texty\Notifications\WP;
+
+use Texty\Notifications\Notification;
 
 class Registration extends Notification {
 
