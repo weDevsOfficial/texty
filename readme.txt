@@ -107,7 +107,7 @@ Well, it depends. Let us know what you want, we might consider adding that featu
 
 - **New:** Added Plivo gateway.
 - **New:** Added Clickatell gateway.
-- **New:** Added Dokan integration. Now vendors will receive SMS notifications when they receive an order (processing and complted status).
+- **New:** Added Dokan integration. Now vendors will receive SMS notifications when they receive an order (processing and completed status).
 - **New:** Added `{items}` shortcode for WooCommerce orders which displays the product with quantity.
 
 = v0.2 (18 Jan, 2021) = 
