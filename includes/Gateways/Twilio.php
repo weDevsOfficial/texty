@@ -32,12 +32,13 @@ class Twilio implements GatewayInterface {
      */
     public function description() {
         return sprintf(
-            // translators: URL to Twilio settings
+            // translators: URL to Twilio settings and help docs
             __(
-                'Send SMS with Twilio. Follow <a href="%s" target="_blank">this link</a> to get the Account SID and Token from Twilio.',
+                'Send SMS with Twilio. Follow <a href="%s" target="_blank">this link</a> to get the Account SID and Token from Twilio. Follow <a href="%s" target="_blank">these instructions</a> to configure the gateway.',
                 'texty'
             ),
-            'https://www.twilio.com/console/project/settings'
+            'https://www.twilio.com/console/project/settings',
+            'https://github.com/weDevsOfficial/texty/wiki/Twilio'
         );
     }
 

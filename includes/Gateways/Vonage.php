@@ -41,12 +41,13 @@ class Vonage implements GatewayInterface {
      */
     public function description() {
         return sprintf(
-            // translators: Vonage dashboard settings URL
+            // translators: Vonage dashboard settings URL and help docs
             __(
-                'Send SMS with Vonage (formerly Nexmo). Follow <a href="%s" target="_blank">this link</a> to get the API Key and Secret from Vonage.',
+                'Send SMS with Vonage (formerly Nexmo). Follow <a href="%s" target="_blank">this link</a> to get the API Key and Secret from Vonage.  Follow <a href="%s" target="_blank">these instructions</a> to configure the gateway.',
                 'texty'
             ),
-            'https://dashboard.nexmo.com/settings'
+            'https://dashboard.nexmo.com/settings',
+            'https://github.com/weDevsOfficial/texty/wiki/Vonage'
         );
     }
 

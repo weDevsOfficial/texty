@@ -32,12 +32,13 @@ class Plivo implements GatewayInterface {
      */
     public function description() {
         return sprintf(
-        // translators: URL to Plivo settings
+            // translators: URL to Plivo settings and help docs
             __(
-                'Send SMS with Plivo. Follow <a href="%s" target="_blank">this link</a> to get the Account SID and Token from Plivo.',
+                'Send SMS with Plivo. Follow <a href="%s" target="_blank">this link</a> to get the Auth ID and Token from Plivo. Follow <a href="%s" target="_blank">these instructions</a> to configure the gateway.',
                 'texty'
             ),
-            'https://console.plivo.com/lookup/dashboard/'
+            'https://console.plivo.com/sms/reporting/',
+            'https://github.com/weDevsOfficial/texty/wiki/Plivo'
         );
     }
 
