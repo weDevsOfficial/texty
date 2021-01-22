@@ -29,6 +29,7 @@ Another example might be an order notification from WooCommerce. Upon receiving 
 
 - [Twilio](https://twilio.com)
 - [Vonage](https://vonage.com/communications-apis/) - Formerly Nexmo
+- [Plivo](https://www.plivo.com/)
 
 ### Supported Events
 
@@ -51,6 +52,14 @@ As Texty doesn't have any capability to send a text by itself, it integrates wit
 
 - Twilio - [Terms of Service](https://www.twilio.com/legal/tos) and [Privacy Policy](https://www.twilio.com/legal/privacy)
 - Vonage - [Legal](https://www.vonage.com/legal/) and [Privacy Policy](https://www.vonage.com/legal/privacy-policy/)
+- Plivo - [Terms of Service](https://www.plivo.com/legal/tos/) and [Privacy Policy](https://www.plivo.com/legal/privacy/)
+
+#### Privacy Policy 
+Texty uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
+
+Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users. 
+
+Learn more about how [Appsero collects and uses this data](https://appsero.com/privacy-policy/).
 
 == Installation ==
 
@@ -60,11 +69,11 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 = Which gateways does Texty support? =
 
-Currently, it supports Twilio and Nexmo. More gateway support is coming soon.
+Currently, it supports Twilio, Vonage (Nexmo), Plivo. More gateway support is coming soon.
 
 = Does it support WooCommerce? =
 
-Yes, it does. Currently admins can receive texts upon a new order. More events will be supported in near future.
+Yes, it does. We are continiously adding more events from WooCommerce.
 
 = Does it support Dokan? =
 
