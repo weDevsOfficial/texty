@@ -15,7 +15,6 @@
         "package.json",
         "phpcs.xml",
         "postcss.config.js",
-        "readme.txt",
         "src",
         "webpack.config.js",
         "yarn-error.log",
