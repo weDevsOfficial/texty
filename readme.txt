@@ -1,7 +1,7 @@
 === Texty - SMS Notification for WordPress, WooCommerce, Dokan and more ===
 Contributors: tareq1988, wedevs, nizamuddinbabu
 Donate link: https://tareq.co/donate/
-Tags: sms, text, notification, twilio, nexmo, vonage
+Tags: sms, text, notification, twilio, nexmo, vonage, clickatell, plivo, dokan, woocommerce
 Requires at least: 4.0
 Tested up to: 5.6
 Stable tag: 0.2
@@ -30,6 +30,7 @@ Another example might be an order notification from WooCommerce. Upon receiving 
 - [Twilio](https://twilio.com)
 - [Vonage](https://vonage.com/communications-apis/) - Formerly Nexmo
 - [Plivo](https://www.plivo.com/)
+- [Clickatell](https://www.clickatell.com/)
 
 ### Supported Events
 
@@ -53,6 +54,7 @@ As Texty doesn't have any capability to send a text by itself, it integrates wit
 - Twilio - [Terms of Service](https://www.twilio.com/legal/tos) and [Privacy Policy](https://www.twilio.com/legal/privacy)
 - Vonage - [Legal](https://www.vonage.com/legal/) and [Privacy Policy](https://www.vonage.com/legal/privacy-policy/)
 - Plivo - [Terms of Service](https://www.plivo.com/legal/tos/) and [Privacy Policy](https://www.plivo.com/legal/privacy/)
+- Clickatell - [Terms of Service](https://www.clickatell.com/legal/master-terms/) and [Privacy Policy](https://www.clickatell.com/legal/general-terms-notices/privacy-notice/)
 
 #### Privacy Policy 
 Texty uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
