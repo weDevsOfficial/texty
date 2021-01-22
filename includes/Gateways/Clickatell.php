@@ -17,23 +17,12 @@ class Clickatell implements GatewayInterface {
     const ENDPOINT = 'https://platform.clickatell.com/messages';
 
     /**
-     * The API Key
+     * Get the name
      *
-     * @var string
+     * @return string
      */
-    private $api_key;
-
-    /**
-     * Set API key
-     *
-     * @param string $api_key
-     *
-     * @return void
-     */
-    public function set_api_key( $api_key ) {
-        $this->api_key = $api_key;
-
-        return $this;
+    public function name() {
+        return __( 'Clickatell', 'texty' );
     }
 
     /**
@@ -41,8 +30,16 @@ class Clickatell implements GatewayInterface {
      *
      * @return string
      */
-    public function name() {
-        return __( 'Clickatell', 'texty' );
+    public function description() {
+        return sprintf(
+            // translators: URL to Twilio settings and help docs
+            __(
+                'Send SMS with Clickatell. Follow <a href="%1$s" target="_blank">this link</a> to get the API. Follow <a href="%2$s" target="_blank">these instructions</a> to configure the gateway.',
+                'texty'
+            ),
+            'https://app.clickatell.com/my-workspace',
+            'https://github.com/weDevsOfficial/texty/wiki/Clickatell'
+        );
     }
 
     /**
@@ -55,12 +52,21 @@ class Clickatell implements GatewayInterface {
     }
 
     /**
-     * Get the credentials
+     * Get the settings
      *
      * @return array
      */
-    public function get_credential() {
-        return [];
+    public function get_settings() {
+        $creds = texty()->settings()->get( 'clickatell' );
+
+        return [
+            'key' => [
+                'name'  => __( 'API Key', 'texty' ),
+                'type'  => 'password',
+                'value' => isset( $creds['key'] ) ? $creds['key'] : '',
+                'help'  => '',
+            ],
+        ];
     }
 
     /**
@@ -72,13 +78,16 @@ class Clickatell implements GatewayInterface {
      * @return WP_Error|true
      */
     public function send( $to, $message ) {
+        $creds = texty()->settings()->get( 'clickatell' );
+
         $args = [
             'headers' => [
-                'Authorization' => $this->api_key,
+                'Authorization' => $creds['key'],
+                'Content-Type'  => 'application/json',
+                'Accept'        => 'application/json',
             ],
             'body' => wp_json_encode(
                 [
-                    'from'    => texty()->settings()->from(),
                     'to'      => [ $to ],
                     'content' => $message,
                 ]
@@ -86,6 +95,39 @@ class Clickatell implements GatewayInterface {
         ];
 
         $response = wp_remote_post( self::ENDPOINT, $args );
+
+        if ( is_wp_error( $response ) ) {
+            return $response;
+        }
+
+        $body          = wp_remote_retrieve_body( $response );
+        $response_code = wp_remote_retrieve_response_code( $response );
+
+        // phpcs:disable
+        if ( 202 !== $response_code ) {
+            switch ( $response_code ) {
+                case 200:
+                    $body = json_decode( $body );
+
+                    return new WP_Error(
+                        $body->errorCode,
+                        $body->errorDescription
+                    );
+
+                case 400:
+                    return new WP_Error(
+                        400,
+                        'Bad Request'
+                    );
+
+                default:
+                    return new WP_Error(
+                        $response_code,
+                        'Bad Request'
+                    );
+            }
+        }
+        // phpcs:enable
 
         return true;
     }
@@ -98,6 +140,10 @@ class Clickatell implements GatewayInterface {
      * @return WP_Error|true
      */
     public function validate( $request ) {
-        $creds = $request->get_param( 'twilio' );
+        $creds = $request->get_param( 'clickatell' );
+
+        return [
+            'key' => $creds['key'],
+        ];
     }
 }
