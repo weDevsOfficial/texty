@@ -9,7 +9,7 @@
             null,
             ""
          ],
-         "https://github.com/weDevsOfficial/texty": [
+         "https://wordpress.org/plugins/texty/": [
             null,
             ""
          ],
@@ -21,7 +21,7 @@
             null,
             ""
          ],
-         "https://tareq.co": [
+         "https://wedevs.com": [
             null,
             ""
          ],
@@ -45,6 +45,14 @@
             null,
             ""
          ],
+         "Send SMS with Clickatell. Follow <a href=\"%1$s\" target=\"_blank\">this link</a> to get the API. Follow <a href=\"%2$s\" target=\"_blank\">these instructions</a> to configure the gateway.": [
+            null,
+            ""
+         ],
+         "API Key": [
+            null,
+            ""
+         ],
          "Fake Gateway": [
             null,
             ""
@@ -53,15 +61,15 @@
             null,
             ""
          ],
-         "Twilio": [
+         "Plivo": [
             null,
             ""
          ],
-         "Send SMS with Twilio. Follow <a href=\"%s\" target=\"_blank\">this link</a> to get the Account SID and Token from Twilio.": [
+         "Send SMS with Plivo. Follow <a href=\"%1$s\" target=\"_blank\">this link</a> to get the Auth ID and Token from Plivo. Follow <a href=\"%2$s\" target=\"_blank\">these instructions</a> to configure the gateway.": [
             null,
             ""
          ],
-         "Account SID": [
+         "Auth ID": [
             null,
             ""
          ],
@@ -73,6 +81,22 @@
             null,
             ""
          ],
+         "Must be a valid number associated with your Plivo account": [
+            null,
+            ""
+         ],
+         "Twilio": [
+            null,
+            ""
+         ],
+         "Send SMS with Twilio. Follow <a href=\"%1$s\" target=\"_blank\">this link</a> to get the Account SID and Token from Twilio. Follow <a href=\"%2$s\" target=\"_blank\">these instructions</a> to configure the gateway.": [
+            null,
+            ""
+         ],
+         "Account SID": [
+            null,
+            ""
+         ],
          "Must be a valid number associated with your Twilio account": [
             null,
             ""
@@ -81,11 +105,7 @@
             null,
             ""
          ],
-         "Send SMS with Vonage (formerly Nexmo). Follow <a href=\"%s\" target=\"_blank\">this link</a> to get the API Key and Secret from Vonage.": [
-            null,
-            ""
-         ],
-         "API Key": [
+         "Send SMS with Vonage (formerly Nexmo). Follow <a href=\"%1$s\" target=\"_blank\">this link</a> to get the API Key and Secret from Vonage.  Follow <a href=\"%2$s\" target=\"_blank\">these instructions</a> to configure the gateway.": [
             null,
             ""
          ],
@@ -101,7 +121,15 @@
             null,
             ""
          ],
-         "New Comment": [
+         "Dokan": [
+            null,
+            ""
+         ],
+         "Vendor - When Order Status is Complete": [
+            null,
+            ""
+         ],
+         "Vendor - When Order Status is Processing": [
             null,
             ""
          ],
@@ -122,6 +150,10 @@
             ""
          ],
          "Customer - When Order Status is Processing": [
+            null,
+            ""
+         ],
+         "New Comment": [
             null,
             ""
          ],

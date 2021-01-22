@@ -5,7 +5,7 @@
  * Plugin URI: https://wordpress.org/plugins/texty/
  * Author: weDevs
  * Author URI: https://wedevs.com
- * Version: 0.2
+ * Version: 1.0
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: texty
@@ -24,7 +24,7 @@ final class Texty {
      *
      * @var string
      */
-    private $version = '0.2';
+    private $version = '1.0';
 
     /**
      * Instances array
