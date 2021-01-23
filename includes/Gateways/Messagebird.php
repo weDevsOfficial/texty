@@ -123,12 +123,12 @@ class Messagebird implements GatewayInterface {
 
         $args = [
             'headers' => [
-                'Authorization' => 'AccessKey ' .  $creds['key'], // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+                'Authorization' => 'AccessKey ' . $creds['key'], // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
             ],
             'body'    => [
                 'limit'  => 10,
                 'offset' => 0,
-                'status' => 'scheduled'
+                'status' => 'scheduled',
             ],
         ];
 
