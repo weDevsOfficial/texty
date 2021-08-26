@@ -12,8 +12,8 @@ class Dokan {
      */
     public function __construct() {
         add_action( 'woocommerce_order_status_changed', [ $this, 'order_status_changed' ], 99, 4 );
-        add_action( 'dokan_new_seller_created', [ $this, 'texty_phone_update_by_seller_phone' ], 35, 2 );
-        add_action( 'dokan_store_profile_saved', [ $this, 'texty_phone_update_by_seller_phone' ], 35, 2 );
+        add_action( 'dokan_new_seller_created', [ $this, 'update_vendor_phone' ], 35, 2 );
+        add_action( 'dokan_store_profile_saved', [ $this, 'update_vendor_phone' ], 35, 2 );
     }
 
     /**
@@ -56,7 +56,7 @@ class Dokan {
      *
      * @return void
      */
-    public function texty_phone_update_by_seller_phone( $user_id, $settings ) {
+    public function update_vendor_phone( $user_id, $settings ) {
         if ( ! isset( $settings['phone'] ) ) {
             return;
         }
