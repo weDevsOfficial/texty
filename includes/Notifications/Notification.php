@@ -265,10 +265,17 @@ abstract class Notification {
             return;
         }
 
+        // Check unique recipients numbers
+        $recipients = array_unique( $recipients );
+
         $content = $this->get_message();
         $gateway = texty()->gateways();
 
         foreach ( $recipients as $number ) {
+            if ( empty( $number ) ) {
+                continue;
+            }
+
             $gateway->send( $number, $content );
         }
     }
