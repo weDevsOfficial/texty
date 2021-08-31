@@ -12,6 +12,8 @@ class Dokan {
      */
     public function __construct() {
         add_action( 'woocommerce_order_status_changed', [ $this, 'order_status_changed' ], 99, 4 );
+        add_action( 'dokan_new_seller_created', [ $this, 'update_vendor_phone' ], 35, 2 );
+        add_action( 'dokan_store_profile_saved', [ $this, 'update_vendor_phone' ], 35, 2 );
     }
 
     /**
@@ -44,6 +46,22 @@ class Dokan {
                 // code...
                 break;
         }
+    }
+
+    /**
+     * Save texty phone number when a seller add/update their phone number
+     *
+     * @param int   $user_id
+     * @param array $settings
+     *
+     * @return void
+     */
+    public function update_vendor_phone( $user_id, $settings ) {
+        if ( ! isset( $settings['phone'] ) ) {
+            return;
+        }
+
+        update_user_meta( $user_id, 'texty_phone', $settings['phone'] );
     }
 
     /**

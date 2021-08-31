@@ -382,6 +382,7 @@ $primary-color: #006eef;
 
   .settings-row__gateways {
     display: flex;
+    flex-wrap: wrap;
   }
 
   .gateway-card {
@@ -390,10 +391,9 @@ $primary-color: #006eef;
     width: 150px;
     background: #fff;
     margin-right: 15px;
+    margin-bottom: 15px;
     padding: 20px 15px;
     border-radius: 5px;
-    // box-shadow: rgba(63, 63, 68, 0.05) 0px 0px 0px 1px,
-    //   rgba(63, 63, 68, 0.15) 0px 1px 3px 0px;
     text-align: center;
     cursor: pointer;
     opacity: 0.4;
