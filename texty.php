@@ -4,8 +4,8 @@
  * Description: SMS Notification for WordPress
  * Plugin URI: https://wordpress.org/plugins/texty/
  * Author: weDevs
- * Author URI: https://wedevs.com
- * Version: 1.1
+ * Author URI: https://wptexty.com/
+ * Version: 1.1.1
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: texty
@@ -24,7 +24,7 @@ final class Texty {
      *
      * @var string
      */
-    private $version = '1.1';
+    private $version = '1.1.1';
 
     /**
      * Instances array

@@ -3,8 +3,8 @@ Contributors: tareq1988, wedevs, nizamuddinbabu
 Donate link: https://tareq.co/donate/
 Tags: sms, text, notification, twilio, nexmo, vonage, clickatell, plivo, dokan, woocommerce
 Requires at least: 5.0
-Tested up to: 5.8
-Stable tag: 1.1
+Tested up to: 6.0
+Stable tag: 1.1.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -103,11 +103,15 @@ Well, it depends. Let us know what you want, we might consider adding that featu
 
 == Changelog ==
 
+= v1.1.1 (2 June, 2022) =
+
+ - **Fix:** WordPress 6.0 compatibility
+
 = v1.1 (31 Aug, 2021) =
 
-  **Fix:** Responsive issue in the settings panel was fixed where the name of gateways were overflowing the total viewport.
-  **Fix:** Remove duplicate numbers while sending messages. If a message is being sent and somehow two person have the same numbers, it'll only send one message.
-  **New:** Syncing of vendor phone number from Dokan added while registration. When a vendor was registering, his phone number from Dokan wasn't syncing as a Texty number, which prevented him to receive messages.
+ - **Fix:** Responsive issue in the settings panel was fixed where the name of gateways were overflowing the total viewport.
+ - **Fix:** Remove duplicate numbers while sending messages. If a message is being sent and somehow two person have the same numbers, it'll only send one message.
+ - **New:** Syncing of vendor phone number from Dokan added while registration. When a vendor was registering, his phone number from Dokan wasn't syncing as a Texty number, which prevented him to receive messages.
 
 = v1.0 (22 Jan, 2021) = 
 
