@@ -4,3 +4,5 @@ node_modules
 yarn-error.log
 dev-config.json
 build
+.idea/*
+dist/vendors.js.LICENSE.txt

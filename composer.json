@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "appsero/client": "^1.2"
+        "appsero/client": "dev-develop"
     },
     "autoload": {
         "psr-4": {
@@ -21,7 +21,7 @@
     },
     "require-dev": {
         "tareq1988/wp-php-cs-fixer": "dev-master",
-        "wp-coding-standards/wpcs": "dev-master",
+        "wp-coding-standards/wpcs": "dev-develop",
         "phpcompatibility/php-compatibility": "*",
         "phpcompatibility/phpcompatibility-wp": "*",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7"
@@ -33,5 +33,10 @@
         "phpcbf": [
             "phpcbf -p"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }
