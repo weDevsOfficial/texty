@@ -2,10 +2,10 @@
 Contributors: tareq1988, wedevs, nizamuddinbabu
 Donate link: https://tareq.co/donate/
 Tags: sms, text, notification, twilio, nexmo, vonage, clickatell, plivo, dokan, woocommerce
-Requires at least: 5.0
-Tested up to: 6.0
-Stable tag: 1.1.1
-Requires PHP: 5.6
+Requires at least: 5.4
+Tested up to: 6.3.2
+Stable tag: 1.1.2
+Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,10 @@ Well, it depends. Let us know what you want, we might consider adding that featu
 1. WooCommerce customer notification
 
 == Changelog ==
+
+= v1.1.1 (31 Oct, 2023) =
+- **update:** WordPress 6.3.2 compatibility
+- **fix:** Fixed Appsero SDK security issue
 
 = v1.1.1 (2 June, 2022) =
 
