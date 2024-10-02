@@ -60,6 +60,9 @@ const config = {
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },
+    fallback: {
+      "path": require.resolve("path-browserify")
+    },
   },
   devServer: {
     contentBase: './dist',
