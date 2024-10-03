@@ -3,8 +3,8 @@ Contributors: tareq1988, wedevs, nizamuddinbabu
 Donate link: https://tareq.co/donate/
 Tags: sms, text, notification, twilio, nexmo, vonage, clickatell, plivo, dokan, woocommerce
 Requires at least: 5.4
-Tested up to: 6.3.2
-Stable tag: 1.1.2
+Tested up to: 6.6.2
+Stable tag: 1.1.3
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,7 +13,7 @@ Texty is a lightweight SMS notification plugin for WordPress.
 
 == Description ==
 
-Texty is a lightweight SMS notification plugin for WordPress. 
+Texty is a lightweight SMS notification plugin for WordPress.
 
 With so many emails coming to your inbox, often it becomes overwhelming to get top of things that you feel most important. A text notification on your phone, WhatsApp, or Telegram may be more desired.
 
@@ -23,7 +23,7 @@ With so many emails coming to your inbox, often it becomes overwhelming to get t
 
 Texty integrates with 3rd party SMS providers to add support for text messaging.
 
-If you need an SMS notification when a user registers your website, Texty can send a text alert to you when someone registers. Similarly, when a different event occurs in different plugins, Texty can send a text notification depending upon the event. 
+If you need an SMS notification when a user registers your website, Texty can send a text alert to you when someone registers. Similarly, when a different event occurs in different plugins, Texty can send a text notification depending upon the event.
 
 Another example might be an order notification from WooCommerce. Upon receiving an order, you might decide to receive a text notification, as well as your customer may get a text notification when the order status changes.
 
@@ -54,7 +54,7 @@ Another example might be an order notification from WooCommerce. Upon receiving 
 - **Vendor - When Order Status is Processing** - Send an alert to the vendor when a new order received in *Processing* status.
 - **Vendor - When Order Status is Complete** - Send an alert to the vendor when a order changes to *Complete*.
 
-#### Disclaimer 
+#### Disclaimer
 
 As Texty doesn't have any capability to send a text by itself, it integrates with 3rd party providers to do so. You should check the individual provider's terms of service and privacy policies before using them.
 
@@ -63,10 +63,10 @@ As Texty doesn't have any capability to send a text by itself, it integrates wit
 - Plivo - [Terms of Service](https://www.plivo.com/legal/tos/) and [Privacy Policy](https://www.plivo.com/legal/privacy/)
 - Clickatell - [Terms of Service](https://www.clickatell.com/legal/master-terms/) and [Privacy Policy](https://www.clickatell.com/legal/general-terms-notices/privacy-notice/)
 
-#### Privacy Policy 
+#### Privacy Policy
 Texty uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
 
-Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users. 
+Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users.
 
 Learn more about how [Appsero collects and uses this data](https://appsero.com/privacy-policy/).
 
@@ -103,7 +103,10 @@ Well, it depends. Let us know what you want, we might consider adding that featu
 
 == Changelog ==
 
-= v1.1.1 (31 Oct, 2023) =
+= v1.1.3 (2 Oct, 2024) =
+- **update:** WordPress 6.6.2 compatibility
+
+= v1.1.2 (31 Oct, 2023) =
 - **update:** WordPress 6.3.2 compatibility
 - **fix:** Fixed Appsero SDK security issue
 
@@ -117,14 +120,14 @@ Well, it depends. Let us know what you want, we might consider adding that featu
  - **Fix:** Remove duplicate numbers while sending messages. If a message is being sent and somehow two person have the same numbers, it'll only send one message.
  - **New:** Syncing of vendor phone number from Dokan added while registration. When a vendor was registering, his phone number from Dokan wasn't syncing as a Texty number, which prevented him to receive messages.
 
-= v1.0 (22 Jan, 2021) = 
+= v1.0 (22 Jan, 2021) =
 
 - **New:** Added Plivo gateway.
 - **New:** Added Clickatell gateway.
 - **New:** Added Dokan integration. Now vendors will receive SMS notifications when they receive an order (processing and completed status).
 - **New:** Added `{items}` shortcode for WooCommerce orders which displays the product with quantity.
 
-= v0.2 (18 Jan, 2021) = 
+= v0.2 (18 Jan, 2021) =
 
 - Initial Release
 
