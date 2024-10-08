@@ -4,7 +4,7 @@ Donate link: https://tareq.co/donate/
 Tags: sms, text, notification, twilio, nexmo, vonage, clickatell, plivo, dokan, woocommerce
 Requires at least: 5.4
 Tested up to: 6.6.2
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -103,7 +103,7 @@ Well, it depends. Let us know what you want, we might consider adding that featu
 
 == Changelog ==
 
-= v1.1.3 (2 Oct, 2024) =
+= v1.1.4 (8 Oct, 2024) =
 - **update:** WordPress 6.6.2 compatibility
 
 = v1.1.2 (31 Oct, 2023) =
