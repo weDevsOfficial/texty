@@ -51,10 +51,11 @@ class Gateways {
      */
     public function all() {
         $gateways = [
-            'twilio'     => __NAMESPACE__ . '\Gateways\Twilio',
-            'vonage'     => __NAMESPACE__ . '\Gateways\Vonage',
-            'clickatell' => __NAMESPACE__ . '\Gateways\Clickatell',
-            'plivo'      => __NAMESPACE__ . '\Gateways\Plivo',
+            'twilio'            => __NAMESPACE__ . '\Gateways\Twilio',
+            'vonage'            => __NAMESPACE__ . '\Gateways\Vonage',
+            'clickatell'        => __NAMESPACE__ . '\Gateways\Clickatell',
+            'plivo'             => __NAMESPACE__ . '\Gateways\Plivo',
+            'messagebird'       => __NAMESPACE__ . '\Gateways\Messagebird',
         ];
 
         if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
